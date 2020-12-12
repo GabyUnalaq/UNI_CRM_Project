@@ -1,5 +1,5 @@
 """
-    CRM Interface
+    CRM Main Window
     Authors: Rares Horju, Gabriel Tomuta
 """
 
@@ -16,7 +16,7 @@ import csv
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi(r"C:\Facultate\Proiect PA\ui\MainInterface.ui", self)
+        uic.loadUi(r"..\ui\MainInterface.ui", self)
         self.setWindowTitle("CRM by the Joestars")
 
         # Widgets
