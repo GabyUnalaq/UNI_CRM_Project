@@ -34,25 +34,7 @@
     <string>E-mail service brought to you by The Joestars®</string>
    </property>
   </widget>
-  <widget class="QColumnView" name="Qtext_message">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>120</y>
-     <width>1011</width>
-     <height>471</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="cursor" stdset="0">
-    <cursorShape>IBeamCursor</cursorShape>
-   </property>
-  </widget>
-  <widget class="QPlainTextEdit" name="Qtext_to">
+  <widget class="QTextEdit" name="Qtext_to">
    <property name="geometry">
     <rect>
      <x>260</x>
@@ -265,7 +247,7 @@
     <string>Subject:</string>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="Qtext_subject">
+  <widget class="QTextEdit" name="Qtext_subject">
    <property name="geometry">
     <rect>
      <x>260</x>
@@ -379,7 +361,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>190</x>
@@ -408,7 +390,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>190</x>
@@ -417,7 +399,7 @@
      <height>131</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="Qvert_layout_text_style">
+   <layout class="QVBoxLayout" name="Qvert_layout_style">
     <item>
      <widget class="QCheckBox" name="Qcheck_bold">
       <property name="font">
@@ -493,6 +475,16 @@
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QPlainTextEdit" name="Qtext_message">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>120</y>
+     <width>1001</width>
+     <height>471</height>
+    </rect>
+   </property>
   </widget>
  </widget>
  <resources/>
