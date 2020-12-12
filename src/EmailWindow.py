@@ -1,5 +1,5 @@
 """
-    CRM Interface
+    CRM Email Window
     Authors: Gabriel Tomuta, Patrania Bogdan
 """
 
@@ -16,7 +16,7 @@ import csv
 class EmailWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi(r"email_interface.ui", self)
+        uic.loadUi(r"..\ui\email_interface.ui", self)
         self.setWindowTitle("Send E-mail")
 
         self.Qcontent_attachments = self.findChild(QWidget, "Qcontent_attachments")
