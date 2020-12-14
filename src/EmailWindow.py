@@ -16,29 +16,22 @@ import csv
 class EmailWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi(r"..\ui\email_interface.ui", self)
+        uic.loadUi(r"..\ui\EmailInterface.ui", self)
         self.setWindowTitle("Send E-mail")
 
+        # Widgets
+        self.Qmain_email = self.findChild(QWidget, "Qmain_email")
         self.Qcontent_attachments = self.findChild(QWidget, "Qcontent_attachments")
 
-        # Layouts
-        self.Qvert_layout_actions = self.findChild(QVBoxLayout, "Qvert_layout_actions")
-        self.Qvert_layout_size = self.findChild(QVBoxLayout, "Qvert_layout_size")
-        self.Qvert_layout_style = self.findChild(QVBoxLayout, "Qvert_layout_style")
-        self.Qvert_layout_font = self.findChild(QVBoxLayout, "Qvert_layout_font")
-
-        # Text
         self.Qtext_message = self.findChild(QPlainTextEdit, "Qtext_message")
         self.Qtext_subject = self.findChild(QTextEdit, "Qtext_subject")
         self.Qtext_to = self.findChild(QTextEdit, "Qtext_to")
 
-        # Push buttons
         self.Qbutton_send = self.findChild(QPushButton, "Qbutton_send")
         self.Qbutton_save = self.findChild(QPushButton, "Qbutton_save")
         self.Qbutton_attach = self.findChild(QPushButton, "Qbutton_attach")
         self.Qbutton_abort = self.findChild(QPushButton, "Qbutton_abort")
 
-        # Check Boxes
         self.Qcheck_bold = self.findChild(QCheckBox, "Qcheck_bold")
         self.Qcheck_italic = self.findChild(QCheckBox, "Qcheck_italic")
         self.Qcheck_underline = self.findChild(QCheckBox, "Qcheck_underline")
@@ -66,3 +59,14 @@ class EmailWindow(QMainWindow):
 
     # Slots ------------------------------------------------------------------------------------------------------------
     # TODO:
+
+
+def show_window():
+    app = QApplication([])
+    window = EmailWindow()
+    window.show()
+    app.exec_()
+
+
+if __name__ == "__main__":
+    show_window()

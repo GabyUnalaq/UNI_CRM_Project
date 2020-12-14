@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>qtCRMInterface</class>
- <widget class="QWidget" name="qtCRMInterface">
+ <class>Qmain_window</class>
+ <widget class="QWidget" name="Qmain_window">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>qtCRMInterface</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="Qlabel_title">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -34,7 +34,7 @@
     <string>CRM brought to you by The Joestars®</string>
    </property>
   </widget>
-  <widget class="QColumnView" name="qtDetaliiClient">
+  <widget class="QColumnView" name="Qtable">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -44,7 +44,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QTextEdit" name="textEdit">
+  <widget class="QTextEdit" name="Qtext_search">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -53,11 +53,19 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="cursor" stdset="0">
+    <cursorShape>IBeamCursor</cursorShape>
+   </property>
    <property name="placeholderText">
     <string/>
    </property>
   </widget>
-  <widget class="QListView" name="listView">
+  <widget class="QListView" name="Qlist_category">
    <property name="geometry">
     <rect>
      <x>1070</x>
@@ -66,8 +74,13 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
-  <widget class="QScrollBar" name="verticalScrollBar">
+  <widget class="QScrollBar" name="Qvert_scroll_bar">
    <property name="geometry">
     <rect>
      <x>1280</x>
@@ -80,7 +93,7 @@
     <enum>Qt::Vertical</enum>
    </property>
   </widget>
-  <widget class="Line" name="line_3">
+  <widget class="Line" name="Qline_main">
    <property name="geometry">
     <rect>
      <x>163</x>
@@ -102,9 +115,14 @@
      <height>581</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_3">
+   <layout class="QVBoxLayout" name="Qvert_layout_action">
     <item>
-     <widget class="QGroupBox" name="qtGeneralActionsGroupBox">
+     <widget class="QGroupBox" name="Qbox_general">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
       <property name="title">
        <string>Actiuni Generale</string>
       </property>
@@ -114,28 +132,48 @@
          <x>10</x>
          <y>20</y>
          <width>131</width>
-         <height>63</height>
+         <height>65</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout">
+       <layout class="QVBoxLayout" name="Qvert_layout_general">
         <item>
-         <widget class="Line" name="line">
+         <widget class="Line" name="Qline_general">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="Qbutton_general_1">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="text">
-           <string>PushButton</string>
+           <string>Button 1</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="Qbutton_general_2">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="text">
-           <string>PushButton</string>
+           <string>Button 2</string>
           </property>
          </widget>
         </item>
@@ -144,7 +182,12 @@
      </widget>
     </item>
     <item>
-     <widget class="QGroupBox" name="qtClientActions">
+     <widget class="QGroupBox" name="Qbox_client">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
       <property name="title">
        <string>Actiuni Client</string>
       </property>
@@ -154,28 +197,48 @@
          <x>10</x>
          <y>20</y>
          <width>131</width>
-         <height>63</height>
+         <height>65</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <layout class="QVBoxLayout" name="Qvert_layout_client">
         <item>
-         <widget class="Line" name="line_2">
+         <widget class="Line" name="Qline_client">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_3">
+         <widget class="QPushButton" name="Qbutton_client_1">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="text">
-           <string>PushButton</string>
+           <string>Button 1</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_4">
+         <widget class="QPushButton" name="Qbutton_client_2">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="text">
-           <string>PushButton</string>
+           <string>Button 2</string>
           </property>
          </widget>
         </item>

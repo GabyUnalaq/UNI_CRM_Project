@@ -20,16 +20,20 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("CRM by the Joestars")
 
         # Widgets
-        self.qtCRMInterface = self.findChild(QWidget, "qtCRMInterface")
-        self.qtClientActions = self.findChild(QGroupBox, "qtClientActions")
-        self.pushButton = self.findChild(QPushButton, "pushButton")
-        self.pushButton_2 = self.findChild(QPushButton, "pushButton_2")
-        self.pushButton_3 = self.findChild(QPushButton, "pushButton_3")
-        self.pushButton_4 = self.findChild(QPushButton, "pushButton_4")
-        self.listView = self.findChild(QListView, "listView")
-        self.qtDetaliiClient = self.findChild(QColumnView, "qtDetaliiClient")
-        self.textEdit = self.findChild(QTextEdit, "textEdit")
-        self.verticalScrollBar = self.findChild(QScrollBar, "verticalScrollBar")
+        self.Qmain_window = self.findChild(QWidget, "Qmain_window")
+
+        self.Qtable = self.findChild(QColumnView, "Qtable")
+        self.Qtext_search = self.findChild(QTextEdit, "Qtext_search")
+        self.Qlist_category = self.findChild(QListView, "Qlist_category")
+        self.Qvert_scroll_bar = self.findChild(QScrollBar, "Qvert_scroll_bar")
+
+        self.Qbox_general = self.findChild(QGroupBox, "Qbox_general")
+        self.Qbutton_general_1 = self.findChild(QPushButton, "Qbutton_general_1")
+        self.Qbutton_general_2 = self.findChild(QPushButton, "Qbutton_general_2")
+
+        self.Qbox_client = self.findChild(QGroupBox, "Qbox_client")
+        self.Qbutton_client_1 = self.findChild(QPushButton, "Qbutton_client_1")
+        self.Qbutton_client_2 = self.findChild(QPushButton, "Qbutton_client_2")
 
         # Members
         # TODO:
@@ -48,3 +52,14 @@ class MainWindow(QMainWindow):
 
     # Slots ------------------------------------------------------------------------------------------------------------
     # TODO:
+
+
+def show_window():
+    app = QApplication([])
+    window = MainWindow()
+    window.show()
+    app.exec_()
+
+
+if __name__ == "__main__":
+    show_window()
