@@ -95,31 +95,13 @@
     <string>Login</string>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="Qtext_email">
+  <widget class="QLineEdit" name="Qtext_password">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>90</y>
-     <width>221</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="cursor" stdset="0">
-    <cursorShape>IBeamCursor</cursorShape>
-   </property>
-  </widget>
-  <widget class="QPlainTextEdit" name="Qtext_password">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
+     <x>100</x>
      <y>130</y>
      <width>221</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <property name="font">
@@ -127,8 +109,20 @@
      <pointsize>10</pointsize>
     </font>
    </property>
-   <property name="cursor" stdset="0">
-    <cursorShape>IBeamCursor</cursorShape>
+  </widget>
+  <widget class="QLineEdit" name="Qtext_email">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>90</y>
+     <width>221</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
  </widget>

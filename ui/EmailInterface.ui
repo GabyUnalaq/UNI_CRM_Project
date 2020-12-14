@@ -34,7 +34,7 @@
     <string>E-mail service brought to you by The Joestars®</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="Qtext_to">
+  <widget class="QPlainTextEdit" name="Qtext_to">
    <property name="geometry">
     <rect>
      <x>260</x>
@@ -247,7 +247,7 @@
     <string>Subject:</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="Qtext_subject">
+  <widget class="QPlainTextEdit" name="Qtext_subject">
    <property name="geometry">
     <rect>
      <x>260</x>
