@@ -1,6 +1,6 @@
 """
     CRM Login Window
-    Authors: Gabriel Tomuta
+    Authors: Gabriel Tomuta, Rares Horju
 """
 
 from PyQt5 import uic, QtWidgets
@@ -11,6 +11,8 @@ import os
 import time
 import threading
 import csv
+
+from src.MainWindow import CRMMain
 
 
 class LoginWindow(QMainWindow):
@@ -32,49 +34,44 @@ class LoginWindow(QMainWindow):
         self.Qtext_password.setEchoMode(QLineEdit.Password)
 
         # Members
-        # TODO:
+        self.login_csv_path = r'../data/login_info.csv'
+        self.MainWindow = CRMMain(self)
 
         # Signals
         self.Qbutton_login.clicked.connect(self.check_password)
-        # TODO: Horsexiu
 
         # Init
-        # TODO:
-
-    def initialization(self):
-        self.read_csv()
-        print(self.csv)
-        # TODO
 
     # Methods ----------------------------------------------------------------------------------------------------------
-    # TODO:
+    def check_in_csv(self, username, password):
+        with open(self.login_csv_path) as login_csv:
+            login_data = csv.reader(login_csv)
+            for line in login_data:
+                print(line)
+                if username in line and password in line:
+                    return True
+            return False
+
+    def redirect_to_main(self):
+        self.MainWindow.show()
+        self.hide()
 
     # Slots ------------------------------------------------------------------------------------------------------------
-    # TODO:
-
-    def read_csv(self):
-        with open('../data/login_info.csv') as csv_file:
-            self.csv = csv.reader(csv_file, delimiter=',')
-
     def check_password(self):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
         msg.setStandardButtons(QMessageBox.Ok)
 
-        if self.Qtext_email.text() == 'Farkas' and self.Qtext_password.text() == 'prost34':
+        if self.check_in_csv(self.Qtext_email.text(), self.Qtext_password.text()) is True:
             msg.setWindowTitle("Locare reusita")
             msg.setText('Success')
             msg.exec_()
             self.redirect_to_main()
-            app.quit()
+            # app.quit()
         else:
             msg.setWindowTitle("Eroare")
             msg.setText('E-mail sau parola incorecta')
             msg.exec_()
-
-    def redirect_to_main(self):
-        pass
-        # TODO
 
 
 def show_window():

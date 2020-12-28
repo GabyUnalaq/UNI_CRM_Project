@@ -13,9 +13,9 @@ import threading
 import csv
 
 
-class MainWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
+class CRMMain(QMainWindow):
+    def __init__(self, parent=None):
+        super(CRMMain, self).__init__(parent)
         uic.loadUi(r"..\ui\MainInterface.ui", self)
         self.setWindowTitle("CRM by the Joestars")
 
