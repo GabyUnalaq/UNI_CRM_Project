@@ -34,7 +34,7 @@ class LoginWindow(QMainWindow):
         self.Qtext_password.setEchoMode(QLineEdit.Password)
 
         # Members
-        self.login_csv_path = r'../data/login_info.csv'
+        self.login_csv_path = r'../data/login_data_base.csv'
         self.MainWindow = CRMMainWindow(self)
 
         # Signals
@@ -47,6 +47,7 @@ class LoginWindow(QMainWindow):
         with open(self.login_csv_path) as login_csv:
             login_data = csv.reader(login_csv)
             for line in login_data:
+                print(line)
                 if username in line and password in line:
                     return True
             return False

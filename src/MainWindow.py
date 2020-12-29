@@ -32,14 +32,14 @@ class CRMMainWindow(QMainWindow):
         self.Qbox_general = self.findChild(QGroupBox, "Qbox_general")
         self.Qbutton_general_1 = self.findChild(QPushButton, "Qbutton_general_1")
         self.Qbutton_general_2 = self.findChild(QPushButton, "Qbutton_general_2")
-        self.QEmailButton = self.findChild(QPushButton, "QEmailButton")
+        # self.QEmailButton = self.findChild(QPushButton, "QEmailButton")
 
         self.Qbox_client = self.findChild(QGroupBox, "Qbox_client")
         self.Qbutton_client_1 = self.findChild(QPushButton, "Qbutton_client_1")
         self.Qbutton_client_2 = self.findChild(QPushButton, "Qbutton_client_2")
 
         # Members
-        self.EmailWindow = EmailWindow(self)
+        self.EmailWindow = EmailWindow()
 
         # Signals
         self.QEmailButton.clicked.connect(self.open_email_window)

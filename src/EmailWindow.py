@@ -14,8 +14,8 @@ import csv
 
 
 class EmailWindow(QMainWindow):
-    def __init__(self, parent=None):
-        super(EmailWindow, self).__init__(parent)
+    def __init__(self):
+        super().__init__()
         uic.loadUi(r"..\ui\EmailInterface.ui", self)
         self.setWindowTitle("Send E-mail")
 
