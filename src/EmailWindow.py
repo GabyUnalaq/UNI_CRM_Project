@@ -13,9 +13,9 @@ import threading
 import csv
 
 
-class EmailWindow(QWidget):
-    def __init__(self):
-        super().__init__()
+class EmailWindow(QMainWindow):
+    def __init__(self, parent=None):
+        super(EmailWindow, self).__init__(parent)
         uic.loadUi(r"..\ui\EmailInterface.ui", self)
         self.setWindowTitle("Send E-mail")
 

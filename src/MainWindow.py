@@ -12,10 +12,12 @@ import time
 import threading
 import csv
 
+from src.EmailWindow import EmailWindow
 
-class CRMMain(QMainWindow):
+
+class CRMMainWindow(QMainWindow):
     def __init__(self, parent=None):
-        super(CRMMain, self).__init__(parent)
+        super(CRMMainWindow, self).__init__(parent)
         uic.loadUi(r"..\ui\MainInterface.ui", self)
         self.setWindowTitle("CRM by the Joestars")
 
@@ -30,16 +32,17 @@ class CRMMain(QMainWindow):
         self.Qbox_general = self.findChild(QGroupBox, "Qbox_general")
         self.Qbutton_general_1 = self.findChild(QPushButton, "Qbutton_general_1")
         self.Qbutton_general_2 = self.findChild(QPushButton, "Qbutton_general_2")
+        self.QEmailButton = self.findChild(QPushButton, "QEmailButton")
 
         self.Qbox_client = self.findChild(QGroupBox, "Qbox_client")
         self.Qbutton_client_1 = self.findChild(QPushButton, "Qbutton_client_1")
         self.Qbutton_client_2 = self.findChild(QPushButton, "Qbutton_client_2")
 
         # Members
-        # TODO:
+        self.EmailWindow = EmailWindow(self)
 
         # Signals
-        # TODO:
+        self.QEmailButton.clicked.connect(self.open_email_window)
 
         # Init
         # TODO:
@@ -51,12 +54,14 @@ class CRMMain(QMainWindow):
     # TODO:
 
     # Slots ------------------------------------------------------------------------------------------------------------
-    # TODO:
+    def open_email_window(self):
+        self.EmailWindow.show()
+        self.hide()
 
 
 def show_window():
     app = QApplication([])
-    window = MainWindow()
+    window = CRMMainWindow()
     window.show()
     app.exec_()
 

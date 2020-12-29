@@ -12,10 +12,10 @@ import time
 import threading
 import csv
 
-from src.MainWindow import CRMMain
+from src.MainWindow import CRMMainWindow
 
 
-class LoginWindow(QWidget):
+class LoginWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.csv = None
@@ -35,7 +35,7 @@ class LoginWindow(QWidget):
 
         # Members
         self.login_csv_path = r'../data/login_info.csv'
-        self.MainWindow = CRMMain(self)
+        self.MainWindow = CRMMainWindow(self)
 
         # Signals
         self.Qbutton_login.clicked.connect(self.check_password)
@@ -47,7 +47,6 @@ class LoginWindow(QWidget):
         with open(self.login_csv_path) as login_csv:
             login_data = csv.reader(login_csv)
             for line in login_data:
-                print(line)
                 if username in line and password in line:
                     return True
             return False

@@ -10,6 +10,14 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>Courier New</family>
+    <pointsize>10</pointsize>
+    <weight>75</weight>
+    <bold>true</bold>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>qtCRMInterface</string>
   </property>
@@ -55,7 +63,10 @@
    </property>
    <property name="font">
     <font>
+     <family>Courier New</family>
      <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
    <property name="cursor" stdset="0">
@@ -76,7 +87,10 @@
    </property>
    <property name="font">
     <font>
+     <family>Courier New</family>
      <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
   </widget>
@@ -111,7 +125,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>151</width>
+     <width>154</width>
      <height>581</height>
     </rect>
    </property>
@@ -120,7 +134,10 @@
      <widget class="QGroupBox" name="Qbox_general">
       <property name="font">
        <font>
+        <family>Courier New</family>
         <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="title">
@@ -147,6 +164,7 @@
          <widget class="QPushButton" name="Qbutton_general_1">
           <property name="font">
            <font>
+            <family>Courier New</family>
             <pointsize>10</pointsize>
             <weight>75</weight>
             <bold>true</bold>
@@ -164,6 +182,7 @@
          <widget class="QPushButton" name="Qbutton_general_2">
           <property name="font">
            <font>
+            <family>Courier New</family>
             <pointsize>10</pointsize>
             <weight>75</weight>
             <bold>true</bold>
@@ -185,7 +204,10 @@
      <widget class="QGroupBox" name="Qbox_client">
       <property name="font">
        <font>
+        <family>Courier New</family>
         <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="title">
@@ -212,6 +234,7 @@
          <widget class="QPushButton" name="Qbutton_client_1">
           <property name="font">
            <font>
+            <family>Courier New</family>
             <pointsize>10</pointsize>
             <weight>75</weight>
             <bold>true</bold>
@@ -229,6 +252,7 @@
          <widget class="QPushButton" name="Qbutton_client_2">
           <property name="font">
            <font>
+            <family>Courier New</family>
             <pointsize>10</pointsize>
             <weight>75</weight>
             <bold>true</bold>
@@ -247,6 +271,19 @@
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QPushButton" name="QEmailButton">
+   <property name="geometry">
+    <rect>
+     <x>1130</x>
+     <y>10</y>
+     <width>171</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Send E-mail</string>
+   </property>
   </widget>
  </widget>
  <resources/>
