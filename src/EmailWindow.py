@@ -13,7 +13,7 @@ import threading
 import csv
 
 
-class EmailWindow(QMainWindow):
+class EmailWindow(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi(r"..\ui\EmailInterface.ui", self)
@@ -40,7 +40,7 @@ class EmailWindow(QMainWindow):
         self.Qcheck_arial = self.findChild(QCheckBox, "Qcheck_arial")
         self.Qcheck_calibri = self.findChild(QCheckBox, "Qcheck_calibri")
         self.Qcheck_courier = self.findChild(QCheckBox, "Qcheck_courier")
-        self.Qcheck_tnr = self.findChild(QCheckBox, "Qcheck_tnr")
+        self.Qcheck_tnr = self.findChild(QCheckBox, "Qcheck_tnr") 
 
         # Members
         # TODO:
