@@ -149,7 +149,7 @@
          <x>10</x>
          <y>20</y>
          <width>131</width>
-         <height>65</height>
+         <height>92</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="Qvert_layout_general">
@@ -157,6 +157,13 @@
          <widget class="Line" name="Qline_general">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="Qbutton_general_email">
+          <property name="text">
+           <string>Send E-mail</string>
           </property>
          </widget>
         </item>
@@ -218,8 +225,8 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>131</width>
-         <height>65</height>
+         <width>135</width>
+         <height>121</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="Qvert_layout_client">
@@ -227,6 +234,42 @@
          <widget class="Line" name="Qline_client">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="Qbutton_client_add">
+          <property name="font">
+           <font>
+            <family>Courier New</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="text">
+           <string>Adaugare intrare</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="Qbutton_client_del">
+          <property name="font">
+           <font>
+            <family>Courier New</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="text">
+           <string>Stergere intrare</string>
           </property>
          </widget>
         </item>
@@ -271,19 +314,6 @@
      </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QPushButton" name="QEmailButton">
-   <property name="geometry">
-    <rect>
-     <x>1130</x>
-     <y>10</y>
-     <width>171</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Send E-mail</string>
-   </property>
   </widget>
  </widget>
  <resources/>
