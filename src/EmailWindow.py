@@ -46,6 +46,7 @@ class EmailWindow(QMainWindow):
         # TODO:
 
         # Signals
+        self.Qbutton_attach.clicked.connect(self.clicked_button_attach)
         # TODO:
 
         # Init
@@ -58,7 +59,9 @@ class EmailWindow(QMainWindow):
     # TODO:
 
     # Slots ------------------------------------------------------------------------------------------------------------
-    # TODO:
+    def clicked_button_attach(self):
+        print("Attach clicked")
+        # TODO
 
 
 def show_window():

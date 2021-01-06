@@ -47,7 +47,6 @@ class LoginWindow(QMainWindow):
         with open(self.login_csv_path) as login_csv:
             login_data = csv.reader(login_csv)
             for line in login_data:
-                print(line)
                 if username in line and password in line:
                     return True
             return False
