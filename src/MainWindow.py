@@ -32,6 +32,7 @@ class CRMMainWindow(QMainWindow):
 
         self.Qbox_general = self.findChild(QGroupBox, "Qbox_general")
         self.Qbutton_general_email = self.findChild(QPushButton, "Qbutton_general_email")
+        self.Qbutton_general_comp = self.findChild(QPushButton, "Qbutton_general_comp")
         self.Qbutton_general_1 = self.findChild(QPushButton, "Qbutton_general_1")
         self.Qbutton_general_2 = self.findChild(QPushButton, "Qbutton_general_2")
 
@@ -65,6 +66,26 @@ class CRMMainWindow(QMainWindow):
 
     def open_client_add_window(self):
         self.ClientAddWindow.show()
+
+    def closeEvent(self, event):
+        exit_result = QMessageBox.question(self, "Inchidere..",
+                                           "Doriti sa inchideti CRM-ul?",
+                                           QMessageBox.Yes | QMessageBox.No)
+        if exit_result == QMessageBox.Yes:
+            event.accept()
+        elif exit_result == QMessageBox.No:
+            event.ignore()
+
+        # exit_result = QtGui.QMessageBox()
+        # exit_result.setText('What to do?')
+        # exit_result.addButton(QtGui.QPushButton('Accept'), QtGui.QMessageBox.YesRole)
+        # exit_result.addButton(QtGui.QPushButton('Reject'), QtGui.QMessageBox.NoRole)
+        # ret = exit_result.Question()
+        # if ret == QtGui.QMessageBox.YesRole:
+        #     print("Yes")
+        # elif ret == QtGui.QMessageBox.NoRole:
+        #     print("Yes")
+        # event.ignore()
 
 
 def show_window():

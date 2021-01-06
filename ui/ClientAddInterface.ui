@@ -22,9 +22,9 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>10</y>
-     <width>961</width>
+     <width>971</width>
      <height>621</height>
     </rect>
    </property>
