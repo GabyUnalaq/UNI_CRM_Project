@@ -57,16 +57,6 @@ class CRMMainWindow(QMainWindow):
     # TODO:
 
     # Methods ----------------------------------------------------------------------------------------------------------
-    # TODO:
-
-    # Slots ------------------------------------------------------------------------------------------------------------
-    def open_email_window(self):
-        self.EmailWindow.show()
-        self.hide()
-
-    def open_client_add_window(self):
-        self.ClientAddWindow.show()
-
     def closeEvent(self, event):
         exit_result = QMessageBox.question(self, "Inchidere..",
                                            "Doriti sa inchideti CRM-ul?",
@@ -86,6 +76,14 @@ class CRMMainWindow(QMainWindow):
         # elif ret == QtGui.QMessageBox.NoRole:
         #     print("Yes")
         # event.ignore()
+
+    # Slots ------------------------------------------------------------------------------------------------------------
+    def open_email_window(self):
+        self.EmailWindow.show()
+        self.hide()
+
+    def open_client_add_window(self):
+        self.ClientAddWindow.show()
 
 
 def show_window():

@@ -13,11 +13,7 @@ import threading
 import csv
 
 
-# TODO
-# Size failing to work properly
-
-
-class ClientAddWindow(QMainWindow):
+class ClientAddWindow(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi(r"..\ui\ClientAddInterface.ui", self)
@@ -29,15 +25,15 @@ class ClientAddWindow(QMainWindow):
         self.Qtext_obs = self.findChild(QPlainTextEdit, "Qtext_obs")
         self.Qtext_error = self.findChild(QPlainTextEdit, "Qtext_error")
 
-        self.Qtext_name_p = self.findChild(QPlainTextEdit, "Qtext_name_p")
-        self.Qtext_dates = self.findChild(QPlainTextEdit, "Qtext_dates")
-        self.Qtext_name_f = self.findChild(QPlainTextEdit, "Qtext_name_f")
-        self.Qtext_cui = self.findChild(QPlainTextEdit, "Qtext_cui")
-        self.Qtext_email = self.findChild(QPlainTextEdit, "Qtext_email")
-        self.Qtext_tel = self.findChild(QPlainTextEdit, "Qtext_tel")
-        self.Qtext_num_a = self.findChild(QPlainTextEdit, "Qtext_num_a")
-        self.Qtext_num_a = self.findChild(QPlainTextEdit, "Qtext_num_a")
-        self.Qtext_fund = self.findChild(QPlainTextEdit, "Qtext_fund")
+        self.Qtext_name_p = self.findChild(QLineEdit, "Qtext_name_p")
+        self.Qtext_dates = self.findChild(QLineEdit, "Qtext_dates")
+        self.Qtext_name_f = self.findChild(QLineEdit, "Qtext_name_f")
+        self.Qtext_cui = self.findChild(QLineEdit, "Qtext_cui")
+        self.Qtext_email = self.findChild(QLineEdit, "Qtext_email")
+        self.Qtext_tel = self.findChild(QLineEdit, "Qtext_tel")
+        self.Qtext_num_a = self.findChild(QLineEdit, "Qtext_num_a")
+        self.Qtext_caen = self.findChild(QLineEdit, "Qtext_caen")
+        self.Qtext_fund = self.findChild(QLineEdit, "Qtext_fund")
 
         # Members
         # TODO:

@@ -15,7 +15,7 @@ import csv
 from src.MainWindow import CRMMainWindow
 
 
-class LoginWindow(QMainWindow):
+class LoginWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.csv = None

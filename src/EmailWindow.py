@@ -13,7 +13,7 @@ import threading
 import csv
 
 
-class EmailWindow(QMainWindow):
+class EmailWindow(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi(r"..\ui\EmailInterface.ui", self)
