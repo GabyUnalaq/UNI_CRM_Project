@@ -10,7 +10,8 @@ import sys
 import os
 import time
 import threading
-import csv
+
+from data.config import write_data_base
 
 
 class ClientAddWindow(QWidget):
@@ -58,10 +59,14 @@ class ClientAddWindow(QWidget):
         elif exit_result == QMessageBox.No:
             event.ignore()
 
+    def error_check(self):
+        # TODO
+        return False
+
     # Slots ------------------------------------------------------------------------------------------------------------
     def click_save(self):
-        pass
-        # TODO
+        if not self.error_check():
+            write_data_base()
 
     def click_abort(self):
         pass

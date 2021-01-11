@@ -10,15 +10,14 @@ import sys
 import os
 import time
 import threading
-import csv
 
 from src.MainWindow import CRMMainWindow
+from data.config import check_in_csv
 
 
 class LoginWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.csv = None
         uic.loadUi(r"..\ui\LoginInterface.ui", self)
         self.setWindowTitle("Login into CRM")
 
@@ -34,7 +33,6 @@ class LoginWindow(QWidget):
         self.Qtext_password.setEchoMode(QLineEdit.Password)
 
         # Members
-        self.login_csv_path = r'../data/login_data_base.csv'
         self.MainWindow = CRMMainWindow(self)
 
         # Signals
@@ -43,14 +41,6 @@ class LoginWindow(QWidget):
         # Init
 
     # Methods ----------------------------------------------------------------------------------------------------------
-    def check_in_csv(self, username, password):
-        with open(self.login_csv_path) as login_csv:
-            login_data = csv.reader(login_csv)
-            for line in login_data:
-                if username in line and password in line:
-                    return True
-            return False
-
     def redirect_to_main(self):
         self.MainWindow.show()
         self.hide()
@@ -61,7 +51,7 @@ class LoginWindow(QWidget):
         msg.setIcon(QMessageBox.Information)
         msg.setStandardButtons(QMessageBox.Ok)
 
-        if self.check_in_csv(self.Qtext_email.text(), self.Qtext_password.text()) is True:
+        if check_in_csv(self.Qtext_email.text(), self.Qtext_password.text()) is True:
             msg.setWindowTitle("Locare reusita")
             msg.setText('Success')
             msg.exec_()

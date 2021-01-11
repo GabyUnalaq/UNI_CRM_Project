@@ -10,10 +10,10 @@ import sys
 import os
 import time
 import threading
-import csv
 
 from src.EmailWindow import EmailWindow
 from src.ClientAddWindow import ClientAddWindow
+from data.config import read_data_base
 
 
 class CRMMainWindow(QMainWindow):
@@ -21,6 +21,9 @@ class CRMMainWindow(QMainWindow):
         super(CRMMainWindow, self).__init__(parent)
         uic.loadUi(r"..\ui\MainInterface.ui", self)
         self.setWindowTitle("CRM by the Joestars")
+
+        # Variables
+        self.data_base = read_data_base()
 
         # Widgets
         self.Qmain_window = self.findChild(QWidget, "Qmain_window")

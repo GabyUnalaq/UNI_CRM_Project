@@ -10,7 +10,6 @@ import sys
 import os
 import time
 import threading
-import csv
 
 
 class EmailWindow(QWidget):
