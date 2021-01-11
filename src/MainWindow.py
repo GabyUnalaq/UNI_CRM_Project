@@ -3,9 +3,10 @@
     Authors: Rares Horju, Gabriel Tomuta
 """
 
-from PyQt5 import uic, QtWidgets
+from PyQt5 import uic, QtWidgets, QtGui
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
+from PyQt5.QtGui import *
 import sys
 import os
 import time
@@ -13,10 +14,14 @@ import threading
 
 from src.EmailWindow import EmailWindow
 from src.EntryWindow import EntryWindow
-from data.config import read_data_base
+import data.config as config
+
+# Tree: https://www.youtube.com/watch?v=dqg0L7Qw3ko
+# Table: https://www.youtube.com/watch?v=xL2NdSubiNY
+# Table2: https://www.youtube.com/watch?v=l2OoXj1Z2hM
 
 
-class CRMMainWindow(QMainWindow):
+class CRMMainWindow(QMainWindow, config.Config):
     def __init__(self, parent=None):
         super(CRMMainWindow, self).__init__(parent)
         uic.loadUi(r"..\ui\MainInterface.ui", self)
@@ -25,10 +30,9 @@ class CRMMainWindow(QMainWindow):
         # Widgets
         self.Qmain_window = self.findChild(QWidget, "Qmain_window")
 
-        self.Qtable = self.findChild(QColumnView, "Qtable")
-        self.Qtext_search = self.findChild(QTextEdit, "Qtext_search")
-        self.Qlist_category = self.findChild(QListView, "Qlist_category")
-        self.Qvert_scroll_bar = self.findChild(QScrollBar, "Qvert_scroll_bar")
+        self.Qtable = self.findChild(QTableWidget, "Qtable")
+        self.Qtext_search = self.findChild(QLineEdit, "Qtext_search")
+        self.Qlist_category = self.findChild(QTreeWidget, "Qlist_category")
 
         self.Qbox_general = self.findChild(QGroupBox, "Qbox_general")
         self.Qbutton_general_email = self.findChild(QPushButton, "Qbutton_general_email")
@@ -47,9 +51,12 @@ class CRMMainWindow(QMainWindow):
         self.EmailWindow = EmailWindow()
         self.EntryWindow = EntryWindow()
 
-        self.data_base = read_data_base()
+        self.data_base = self.read_data_base()
 
         # Signals
+        self.Qtable.cellClicked.connect(self.clicked_cell)
+        self.Qlist_category.itemClicked.connect(self.clicked_category)
+
         self.Qbutton_general_email.clicked.connect(self.clicked_email_window)
 
         self.Qbutton_client_add.clicked.connect(self.clicked_add_entry)
@@ -57,10 +64,24 @@ class CRMMainWindow(QMainWindow):
         self.Qbutton_client_del.clicked.connect(self.clicked_del_entry)
 
         # Init
-        # TODO:
+        self.init_data_base()
 
     # Initialization ---------------------------------------------------------------------------------------------------
-    # TODO:
+    def init_data_base(self):
+        # self.setCentralWidget(self.Qtable)
+
+        self.Qtable.setColumnCount(len(self.CRITERIA))
+        self.Qtable.setRowCount(len(self.data_base['entries']))
+        self.Qtable.setHorizontalHeaderLabels(self.CRITERIA)
+
+        # Load data
+        for row in range(0, len(self.data_base['entries'])):
+            for col in range(0, len(self.CRITERIA)):
+                item = self.data_base['entries'][row][list(self.data_base['entries'][row])[col]]
+                self.Qtable.setItem(row, col, QTableWidgetItem(item))
+
+        self.Qtable.resizeColumnsToContents()
+        self.Qtable.resizeRowsToContents()
 
     # Methods ----------------------------------------------------------------------------------------------------------
     def closeEvent(self, event):
@@ -72,7 +93,27 @@ class CRMMainWindow(QMainWindow):
         elif exit_result == QMessageBox.No:
             event.ignore()
 
+    def refresh_data_base(self):
+        self.Qtable.setRowCount(len(self.data_base['entries']))
+
+        # Load data
+        for row in range(0, len(self.data_base['entries'])):
+            for col in range(0, len(self.CRITERIA)):
+                item = self.data_base['entries'][row][list(self.data_base['entries'][row])[col]]
+                self.Qtable.setItem(row, col, QTableWidgetItem(item))
+
+        self.Qtable.resizeColumnsToContents()
+        self.Qtable.resizeRowsToContents()
+
     # Slots ------------------------------------------------------------------------------------------------------------
+    def clicked_category(self):
+        item = "Da, desigur, inspiratie"
+        print(item)
+        # TODO
+
+    def clicked_cell(self, row, col):
+        print(self.data_base['entries'][row][list(self.data_base['entries'][row])[col]])
+
         # General
     def clicked_email_window(self):
         self.EmailWindow.show()

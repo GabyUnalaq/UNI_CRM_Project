@@ -1,6 +1,7 @@
 """
-    CRM Add Entry Window
-    Authors: Gabriel Tomuta
+    CRM Entry Window
+    Used for adding / modifying an entry
+    Author: Gabriel Tomuta
 """
 
 from PyQt5 import uic, QtWidgets
@@ -10,8 +11,6 @@ import sys
 import os
 import time
 import threading
-
-from data.config import write_data_base
 
 
 class EntryWindow(QWidget):

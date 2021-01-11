@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1306</width>
+    <width>1276</width>
     <height>600</height>
    </rect>
   </property>
@@ -42,22 +42,22 @@
     <string>CRM brought to you by The Joestars®</string>
    </property>
   </widget>
-  <widget class="QColumnView" name="Qtable">
+  <widget class="QTableWidget" name="Qtable">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>90</y>
-     <width>1071</width>
-     <height>501</height>
+     <x>201</x>
+     <y>101</y>
+     <width>1061</width>
+     <height>481</height>
     </rect>
    </property>
   </widget>
-  <widget class="QTextEdit" name="Qtext_search">
+  <widget class="QTreeWidget" name="Qlist_category">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>50</y>
-     <width>721</width>
+     <x>1010</x>
+     <y>60</y>
+     <width>251</width>
      <height>31</height>
     </rect>
    </property>
@@ -69,43 +69,11 @@
      <bold>true</bold>
     </font>
    </property>
-   <property name="cursor" stdset="0">
-    <cursorShape>IBeamCursor</cursorShape>
-   </property>
-   <property name="placeholderText">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QListView" name="Qlist_category">
-   <property name="geometry">
-    <rect>
-     <x>1040</x>
-     <y>50</y>
-     <width>231</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Courier New</family>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-  </widget>
-  <widget class="QScrollBar" name="Qvert_scroll_bar">
-   <property name="geometry">
-    <rect>
-     <x>1280</x>
-     <y>90</y>
-     <width>21</width>
-     <height>501</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Vertical</enum>
-   </property>
+   <column>
+    <property name="text">
+     <string notr="true">1</string>
+    </property>
+   </column>
   </widget>
   <widget class="Line" name="Qline_main">
    <property name="geometry">
@@ -350,6 +318,16 @@
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QLineEdit" name="Qtest_search">
+   <property name="geometry">
+    <rect>
+     <x>196</x>
+     <y>60</y>
+     <width>621</width>
+     <height>31</height>
+    </rect>
+   </property>
   </widget>
  </widget>
  <resources/>
