@@ -69,6 +69,7 @@ class CRMMainWindow(QMainWindow, config.Config):
     # Initialization ---------------------------------------------------------------------------------------------------
     def init_data_base(self):
         # self.setCentralWidget(self.Qtable)
+        # self.Qtable.fitInView(Qt.KeepAspectRatio)
 
         self.Qtable.setColumnCount(len(self.CRITERIA))
         self.Qtable.setRowCount(len(self.data_base['entries']))
