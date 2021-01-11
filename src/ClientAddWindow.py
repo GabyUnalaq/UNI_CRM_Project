@@ -49,7 +49,14 @@ class ClientAddWindow(QWidget):
     # TODO:
 
     # Methods ----------------------------------------------------------------------------------------------------------
-    # TODO:
+    def closeEvent(self, event):
+        exit_result = QMessageBox.question(self, "Abort",
+                                           "Doriti sa renuntati?",
+                                           QMessageBox.Yes | QMessageBox.No)
+        if exit_result == QMessageBox.Yes:
+            event.close()
+        elif exit_result == QMessageBox.No:
+            event.ignore()
 
     # Slots ------------------------------------------------------------------------------------------------------------
     def click_save(self):
