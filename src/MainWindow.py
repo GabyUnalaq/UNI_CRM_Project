@@ -12,7 +12,7 @@ import time
 import threading
 
 from src.EmailWindow import EmailWindow
-from src.ClientAddWindow import ClientAddWindow
+from src.EntryWindow import EntryWindow
 from data.config import read_data_base
 
 
@@ -21,9 +21,6 @@ class CRMMainWindow(QMainWindow):
         super(CRMMainWindow, self).__init__(parent)
         uic.loadUi(r"..\ui\MainInterface.ui", self)
         self.setWindowTitle("CRM by the Joestars")
-
-        # Variables
-        self.data_base = read_data_base()
 
         # Widgets
         self.Qmain_window = self.findChild(QWidget, "Qmain_window")
@@ -41,17 +38,23 @@ class CRMMainWindow(QMainWindow):
 
         self.Qbox_client = self.findChild(QGroupBox, "Qbox_client")
         self.Qbutton_client_add = self.findChild(QPushButton, "Qbutton_client_add")
+        self.Qbutton_client_modif = self.findChild(QPushButton, "Qbutton_client_modif")
         self.Qbutton_client_del = self.findChild(QPushButton, "Qbutton_client_del")
         self.Qbutton_client_1 = self.findChild(QPushButton, "Qbutton_client_1")
         self.Qbutton_client_2 = self.findChild(QPushButton, "Qbutton_client_2")
 
         # Members
         self.EmailWindow = EmailWindow()
-        self.ClientAddWindow = ClientAddWindow()
+        self.EntryWindow = EntryWindow()
+
+        self.data_base = read_data_base()
 
         # Signals
-        self.Qbutton_general_email.clicked.connect(self.open_email_window)
-        self.Qbutton_client_add.clicked.connect(self.open_client_add_window)
+        self.Qbutton_general_email.clicked.connect(self.clicked_email_window)
+
+        self.Qbutton_client_add.clicked.connect(self.clicked_add_entry)
+        self.Qbutton_client_modif.clicked.connect(self.clicked_modif_entry)
+        self.Qbutton_client_del.clicked.connect(self.clicked_del_entry)
 
         # Init
         # TODO:
@@ -69,24 +72,30 @@ class CRMMainWindow(QMainWindow):
         elif exit_result == QMessageBox.No:
             event.ignore()
 
-        # exit_result = QtGui.QMessageBox()
-        # exit_result.setText('What to do?')
-        # exit_result.addButton(QtGui.QPushButton('Accept'), QtGui.QMessageBox.YesRole)
-        # exit_result.addButton(QtGui.QPushButton('Reject'), QtGui.QMessageBox.NoRole)
-        # ret = exit_result.Question()
-        # if ret == QtGui.QMessageBox.YesRole:
-        #     print("Yes")
-        # elif ret == QtGui.QMessageBox.NoRole:
-        #     print("Yes")
-        # event.ignore()
-
     # Slots ------------------------------------------------------------------------------------------------------------
-    def open_email_window(self):
+        # General
+    def clicked_email_window(self):
         self.EmailWindow.show()
         self.hide()
 
-    def open_client_add_window(self):
-        self.ClientAddWindow.show()
+        # Client
+    def clicked_add_entry(self):
+        self.EntryWindow.saved.connect(self.saved_entry)
+        self.EntryWindow.show()
+
+    def clicked_modif_entry(self):
+        self.EntryWindow.set_data("Ananas")
+        self.EntryWindow.saved.connect(self.saved_entry)
+        self.EntryWindow.show()
+
+    def clicked_del_entry(self):
+        # TODO
+        pass
+
+    @pyqtSlot()
+    def saved_entry(self):
+        entry = self.EntryWindow.get_data()
+        print(entry)
 
 
 def show_window():

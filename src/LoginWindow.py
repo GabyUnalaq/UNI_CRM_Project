@@ -39,6 +39,7 @@ class LoginWindow(QWidget):
         self.Qbutton_login.clicked.connect(self.check_password)
 
         # Init
+        # TODO
 
     # Methods ----------------------------------------------------------------------------------------------------------
     def redirect_to_main(self):

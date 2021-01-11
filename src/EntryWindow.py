@@ -14,10 +14,12 @@ import threading
 from data.config import write_data_base
 
 
-class ClientAddWindow(QWidget):
+class EntryWindow(QWidget):
+    saved = pyqtSignal()
+
     def __init__(self):
         super().__init__()
-        uic.loadUi(r"..\ui\ClientAddInterface.ui", self)
+        uic.loadUi(r"..\ui\EntryInterface.ui", self)
         self.setWindowTitle("Adaugare intrare")
 
         # Widgets
@@ -37,11 +39,11 @@ class ClientAddWindow(QWidget):
         self.Qtext_fund = self.findChild(QLineEdit, "Qtext_fund")
 
         # Members
-        # TODO:
+        self.data = None
 
         # Signals
         self.Qbutton_save.clicked.connect(self.click_save)
-        self.Qbutton_abort.clicked.connect(self.click_abort)
+        self.Qbutton_abort.clicked.connect(self.close)
 
         # Init
         # TODO:
@@ -50,32 +52,28 @@ class ClientAddWindow(QWidget):
     # TODO:
 
     # Methods ----------------------------------------------------------------------------------------------------------
-    def closeEvent(self, event):
-        exit_result = QMessageBox.question(self, "Abort",
-                                           "Doriti sa renuntati?",
-                                           QMessageBox.Yes | QMessageBox.No)
-        if exit_result == QMessageBox.Yes:
-            event.close()
-        elif exit_result == QMessageBox.No:
-            event.ignore()
-
     def error_check(self):
         # TODO
         return False
 
+    def set_data(self, data):
+        self.data = data
+
+    def get_data(self):
+        if self.data is None:
+            self.data = "Mamaliga"
+        return self.data
+
     # Slots ------------------------------------------------------------------------------------------------------------
     def click_save(self):
         if not self.error_check():
-            write_data_base()
-
-    def click_abort(self):
-        pass
-        # TODO
+            self.saved.emit()
+            self.close()
 
 
 def show_window():
     app = QApplication([])
-    window = ClientAddWindow()
+    window = EntryWindow()
     window.show()
     app.exec_()
 

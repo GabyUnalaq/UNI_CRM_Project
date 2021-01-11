@@ -79,7 +79,7 @@
   <widget class="QListView" name="Qlist_category">
    <property name="geometry">
     <rect>
-     <x>1070</x>
+     <x>1040</x>
      <y>50</y>
      <width>231</width>
      <height>31</height>
@@ -270,6 +270,24 @@
           </property>
           <property name="text">
            <string>Adaugare intrare</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="Qbutton_client_modif">
+          <property name="font">
+           <font>
+            <family>Courier New</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="text">
+           <string>Modifica intrare</string>
           </property>
          </widget>
         </item>
