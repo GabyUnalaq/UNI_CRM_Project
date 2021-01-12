@@ -112,11 +112,6 @@ class CRMMainWindow(QWidget, config.Config):
         self.LoginWindow.hide()
         self.show()
 
-    def on_clicked_category(self):
-        item = "Da, desigur, inspiratie"
-        print(item)
-        # TODO
-
     def on_clicked_cell(self, row, col):
         print(self.data_base['entries'][row][list(self.data_base['entries'][row])[col]])
 
