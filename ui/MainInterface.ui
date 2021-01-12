@@ -53,7 +53,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="Qbutton_general_comp">
+         <widget class="QPushButton" name="Qbutton_general_notif">
           <property name="font">
            <font>
             <family>Courier New</family>
@@ -66,12 +66,12 @@
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="text">
-           <string>Vezi info comp.</string>
+           <string>Notificari</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="Qbutton_general_1">
+         <widget class="QPushButton" name="Qbutton_general_lich">
           <property name="font">
            <font>
             <family>Courier New</family>
@@ -84,25 +84,14 @@
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="text">
-           <string>Button 1</string>
+           <string>Licitatii</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="Qbutton_general_2">
-          <property name="font">
-           <font>
-            <family>Courier New</family>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
+         <widget class="QPushButton" name="Qbutton_general_rap">
           <property name="text">
-           <string>Button 2</string>
+           <string>Rapoarte</string>
           </property>
          </widget>
         </item>
@@ -157,7 +146,7 @@
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="text">
-           <string>Adaugare intrare</string>
+           <string>Adauga intrare</string>
           </property>
          </widget>
         </item>
@@ -193,12 +182,12 @@
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="text">
-           <string>Stergere intrare</string>
+           <string>Sterge intrare</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="Qbutton_client_1">
+         <widget class="QPushButton" name="Qbutton_general_comp">
           <property name="font">
            <font>
             <family>Courier New</family>
@@ -211,25 +200,7 @@
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="text">
-           <string>Button 1</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="Qbutton_client_2">
-          <property name="font">
-           <font>
-            <family>Courier New</family>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="text">
-           <string>Button 2</string>
+           <string>Vezi info comp.</string>
           </property>
          </widget>
         </item>

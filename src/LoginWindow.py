@@ -22,20 +22,17 @@ class LoginWindow(QWidget, config.Config):
         self.setWindowTitle("Login into CRM")
 
         # Widgets
-        self.Qmain_login = self.findChild(QWidget, "Qmain_login")
         self.Qbutton_login = self.findChild(QPushButton, "Qbutton_login")
-        self.Qbutton_login.setCheckable(True)
         self.Qtext_email = self.findChild(QLineEdit, "Qtext_email")
         self.Qtext_password = self.findChild(QLineEdit, "Qtext_password")
 
+        # Signals
+        self.Qbutton_login.clicked.connect(self.on_click_login)
+
+        # Init
         self.Qtext_email.setPlaceholderText('Introduceti e-mail')
         self.Qtext_password.setPlaceholderText('Introduceti parola')
         self.Qtext_password.setEchoMode(QLineEdit.Password)
-
-        # Signals
-        self.Qbutton_login.clicked.connect(self.on_check_password)
-
-        # Init
         self.Qtext_email.setFocus()
 
     # Methods ----------------------------------------------------------------------------------------------------------
@@ -56,16 +53,17 @@ class LoginWindow(QWidget, config.Config):
             self.Qtext_password.setFocus()
 
     # Slots ------------------------------------------------------------------------------------------------------------
-    def on_check_password(self):
-        msg = QMessageBox()
-        msg.setIcon(QMessageBox.Information)
-        msg.setStandardButtons(QMessageBox.Ok)
-
+    def on_click_login(self):
         if self.check_in_csv(self.Qtext_email.text(), self.Qtext_password.text()) is True:
             self.loginSuccessSignal.emit()
         else:
             self.Qtext_email.setText('')
             self.Qtext_password.setText('')
+
+            # Message Box
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
             msg.setWindowTitle("Eroare")
             msg.setText('E-mail sau parola incorecta')
             msg.exec_()

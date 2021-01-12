@@ -35,7 +35,7 @@
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="text">
-           <string>Send</string>
+           <string>Trimite</string>
           </property>
          </widget>
         </item>
@@ -52,7 +52,7 @@
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="text">
-           <string>Save draft</string>
+           <string>Salveaza</string>
           </property>
          </widget>
         </item>
@@ -69,7 +69,7 @@
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="text">
-           <string>Abort</string>
+           <string>Renunta</string>
           </property>
          </widget>
         </item>
@@ -86,7 +86,7 @@
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="text">
-           <string>Attach</string>
+           <string>Ataseaza</string>
           </property>
          </widget>
         </item>
@@ -100,7 +100,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Attachments:</string>
+           <string>Atasamente:</string>
           </property>
          </widget>
         </item>
@@ -146,9 +146,9 @@
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
-            <widget class="QGroupBox" name="groupBox">
+            <widget class="QGroupBox" name="Qbox_stil">
              <property name="title">
-              <string>GroupBox</string>
+              <string>Stil text</string>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_3">
               <item>
@@ -229,9 +229,9 @@
             </widget>
            </item>
            <item>
-            <widget class="QGroupBox" name="groupBox_3">
+            <widget class="QGroupBox" name="Qbox_font">
              <property name="title">
-              <string>GroupBox</string>
+              <string>Font text</string>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout">
               <item>
@@ -322,9 +322,9 @@
             </widget>
            </item>
            <item>
-            <widget class="QGroupBox" name="groupBox_2">
+            <widget class="QGroupBox" name="Qbox_size_2">
              <property name="title">
-              <string>GroupBox</string>
+              <string>Marime text</string>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">
               <item>
@@ -342,7 +342,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QSpinBox" name="Qbox_size"/>
+               <widget class="QSpinBox" name="Qsbox_size"/>
               </item>
               <item>
                <spacer name="verticalSpacer">
@@ -384,7 +384,7 @@
                   </font>
                  </property>
                  <property name="text">
-                  <string>To:</string>
+                  <string>Catre:</string>
                  </property>
                 </widget>
                </item>
@@ -398,7 +398,7 @@
                   </font>
                  </property>
                  <property name="text">
-                  <string>Subject:</string>
+                  <string>Subiect:</string>
                  </property>
                 </widget>
                </item>

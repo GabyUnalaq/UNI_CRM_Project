@@ -29,23 +29,19 @@ class CRMMainWindow(QWidget, config.Config):
         self.setWindowTitle("CRM by the Joestars")
 
         # Widgets
-        self.Qmain_window = self.findChild(QWidget, "Qmain_window")
-
         self.Qtable = self.findChild(QTableView, "Qtable")
         self.Qtext_search = self.findChild(QLineEdit, "Qtext_search")
+        self.Qbutton_search = self.findChild(QPushButton, "Qbutton_search")  # Search
 
-        self.Qbox_general = self.findChild(QGroupBox, "Qbox_general")
-        self.Qbutton_general_email = self.findChild(QPushButton, "Qbutton_general_email")
-        self.Qbutton_general_comp = self.findChild(QPushButton, "Qbutton_general_comp")
-        self.Qbutton_general_1 = self.findChild(QPushButton, "Qbutton_general_1")
-        self.Qbutton_general_2 = self.findChild(QPushButton, "Qbutton_general_2")
+        self.Qbutton_general_email = self.findChild(QPushButton, "Qbutton_general_email")  # Email
+        self.Qbutton_general_notif = self.findChild(QPushButton, "Qbutton_general_notif")  # Notificari
+        self.Qbutton_general_lich = self.findChild(QPushButton, "Qbutton_general_lich")  # Licitatii
+        self.Qbutton_general_rap = self.findChild(QPushButton, "Qbutton_general_rap")  # Rapoarte
 
-        self.Qbox_client = self.findChild(QGroupBox, "Qbox_client")
-        self.Qbutton_client_add = self.findChild(QPushButton, "Qbutton_client_add")
-        self.Qbutton_client_modif = self.findChild(QPushButton, "Qbutton_client_modif")
-        self.Qbutton_client_del = self.findChild(QPushButton, "Qbutton_client_del")
-        self.Qbutton_client_1 = self.findChild(QPushButton, "Qbutton_client_1")
-        self.Qbutton_client_2 = self.findChild(QPushButton, "Qbutton_client_2")
+        self.Qbutton_client_add = self.findChild(QPushButton, "Qbutton_client_add")  # Adauga intrare
+        self.Qbutton_client_modif = self.findChild(QPushButton, "Qbutton_client_modif")  # Modifica intrare
+        self.Qbutton_client_del = self.findChild(QPushButton, "Qbutton_client_del")  # Sterge intrare
+        self.Qbutton_client_comp = self.findChild(QPushButton, "Qbutton_client_comp")  # Info companie
 
         # Members
         self.LoginWindow = LoginWindow()
@@ -70,13 +66,13 @@ class CRMMainWindow(QWidget, config.Config):
 
     # Initialization ---------------------------------------------------------------------------------------------------
     def init_data_base(self):
-        self.Qtable.setColumnCount(len(self.CRITERIA))
+        self.Qtable.setColumnCount(len(self.data_base['criteria']))
         self.Qtable.setRowCount(len(self.data_base['entries']))
-        self.Qtable.setHorizontalHeaderLabels(self.CRITERIA)
+        self.Qtable.setHorizontalHeaderLabels(self.data_base['criteria'])
 
         # Load data
         for row in range(0, len(self.data_base['entries'])):
-            for col in range(0, len(self.CRITERIA)):
+            for col in range(0, len(self.data_base['criteria'])):
                 item = self.data_base['entries'][row][list(self.data_base['entries'][row])[col]]
                 self.Qtable.setItem(row, col, QTableWidgetItem(item))
 
@@ -99,7 +95,7 @@ class CRMMainWindow(QWidget, config.Config):
 
         # Load data
         for row in range(0, len(self.data_base['entries'])):
-            for col in range(0, len(self.CRITERIA)):
+            for col in range(0, len(self.data_base['criteria'])):
                 item = self.data_base['entries'][row][list(self.data_base['entries'][row])[col]]
                 self.Qtable.setItem(row, col, QTableWidgetItem(item))
 
@@ -118,7 +114,6 @@ class CRMMainWindow(QWidget, config.Config):
         # General
     def on_clicked_email_window(self):
         self.EmailWindow.show()
-        self.hide()
 
         # Client
     def on_clicked_add_entry(self):

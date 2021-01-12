@@ -1,19 +1,19 @@
+"""
+    Config class
+    Authors: Gabriel Tomuta
+"""
+
 import urllib.request
 import json
 import csv
 
 
 class Config(object):
-    # Paths ------------------------------------------------------------------------------------------------------------
-
     SVR_DATA_BASE = 'http://crm.bpagency.ro/crm_data/data_base.json'
     SVR_LOGIN_INFO = ''
 
     DATA_BASE = '../data/data_base.json'
     LOGIN_INFO = '../data/login_data_base.csv'
-
-    # Table ------------------------------------------------------------------------------------------------------------
-    CRITERIA = ['Nume + Prenume', 'Informatii', 'Nume firma']
 
     # Methods ----------------------------------------------------------------------------------------------------------
     def read_data_base(self, server_read=False):
@@ -41,3 +41,13 @@ class Config(object):
                 if username in line and password in line:
                     return True
             return False
+
+
+def test_json():
+    config = Config()
+    data = config.read_data_base()
+    print(data['criteria'])
+
+
+if __name__ == "__main__":
+    test_json()

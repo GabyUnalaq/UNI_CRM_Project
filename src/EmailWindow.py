@@ -39,13 +39,16 @@ class EmailWindow(QWidget):
         self.Qcheck_arial = self.findChild(QCheckBox, "Qcheck_arial")
         self.Qcheck_calibri = self.findChild(QCheckBox, "Qcheck_calibri")
         self.Qcheck_courier = self.findChild(QCheckBox, "Qcheck_courier")
-        self.Qcheck_tnr = self.findChild(QCheckBox, "Qcheck_tnr") 
+        self.Qcheck_tnr = self.findChild(QCheckBox, "Qcheck_tnr")
+
+        self.Qsbox_size = self.findChild(QSpinBox, "Qsbox_size")
 
         # Members
         # TODO:
 
         # Signals
         self.Qbutton_attach.clicked.connect(self.clicked_button_attach)
+        self.Qbutton_abort.clicked.connect(self.close)
         # TODO:
 
         # Init

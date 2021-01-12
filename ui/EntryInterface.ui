@@ -31,7 +31,7 @@
           <cursorShape>PointingHandCursor</cursorShape>
          </property>
          <property name="text">
-          <string>Save</string>
+          <string>Salveaza</string>
          </property>
         </widget>
        </item>
@@ -48,7 +48,7 @@
           <cursorShape>PointingHandCursor</cursorShape>
          </property>
          <property name="text">
-          <string>Abort</string>
+          <string>Renunta</string>
          </property>
         </widget>
        </item>
