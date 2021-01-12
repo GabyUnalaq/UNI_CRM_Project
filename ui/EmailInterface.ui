@@ -337,7 +337,7 @@
                  </font>
                 </property>
                 <property name="text">
-                 <string>Size:</string>
+                 <string>Marime:</string>
                 </property>
                </widget>
               </item>
