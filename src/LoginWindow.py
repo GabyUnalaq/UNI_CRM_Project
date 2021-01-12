@@ -10,12 +10,12 @@ import sys
 import os
 import time
 import threading
-
-from src.MainWindow import CRMMainWindow
 import data.config as config
 
 
 class LoginWindow(QWidget, config.Config):
+    loginSuccessSignal = pyqtSignal()
+
     def __init__(self):
         super().__init__()
         uic.loadUi(r"..\ui\LoginInterface.ui", self)
@@ -32,11 +32,8 @@ class LoginWindow(QWidget, config.Config):
         self.Qtext_password.setPlaceholderText('Introduceti parola')
         self.Qtext_password.setEchoMode(QLineEdit.Password)
 
-        # Members
-        self.MainWindow = CRMMainWindow(self)
-
         # Signals
-        self.Qbutton_login.clicked.connect(self.check_password)
+        self.Qbutton_login.clicked.connect(self.on_check_password)
 
         # Init
         self.Qtext_email.setFocus()
@@ -46,43 +43,29 @@ class LoginWindow(QWidget, config.Config):
         self.MainWindow.show()
         self.hide()
 
+    # Events -----------------------------------------------------------------------------------------------------------
     def keyPressEvent(self, event):
         if event.key() == 16777220:  # Enter
             if not self.Qtext_password.text():
                 self.Qtext_password.setFocus()
             else:
-                self.check_password()
+                self.Qbutton_login.clicked.emit()
         elif event.key() == 16777235:  # Up_arrow
             self.Qtext_email.setFocus()
         elif event.key() == 16777237:  # Down_arrow
             self.Qtext_password.setFocus()
 
     # Slots ------------------------------------------------------------------------------------------------------------
-    def check_password(self):
+    def on_check_password(self):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
         msg.setStandardButtons(QMessageBox.Ok)
 
         if self.check_in_csv(self.Qtext_email.text(), self.Qtext_password.text()) is True:
-            msg.setWindowTitle("Locare reusita")
-            msg.setText('Success')
-            msg.exec_()
-            self.redirect_to_main()
-            # app.quit()
+            self.loginSuccessSignal.emit()
         else:
             self.Qtext_email.setText('')
             self.Qtext_password.setText('')
             msg.setWindowTitle("Eroare")
             msg.setText('E-mail sau parola incorecta')
             msg.exec_()
-
-
-def show_window():
-    app = QApplication([])
-    window = LoginWindow()
-    window.show()
-    app.exec_()
-
-
-if __name__ == "__main__":
-    show_window()

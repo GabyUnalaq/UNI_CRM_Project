@@ -14,7 +14,7 @@ import threading
 
 
 class EntryWindow(QWidget):
-    saved = pyqtSignal()
+    entrySavedSignal = pyqtSignal()
 
     def __init__(self):
         super().__init__()
@@ -41,7 +41,7 @@ class EntryWindow(QWidget):
         self.data = None
 
         # Signals
-        self.Qbutton_save.clicked.connect(self.click_save)
+        self.Qbutton_save.clicked.connect(self.on_click_save)
         self.Qbutton_abort.clicked.connect(self.close)
 
         # Init
@@ -64,9 +64,9 @@ class EntryWindow(QWidget):
         return self.data
 
     # Slots ------------------------------------------------------------------------------------------------------------
-    def click_save(self):
+    def on_click_save(self):
         if not self.error_check():
-            self.saved.emit()
+            self.entrySavedSignal.emit()
             self.close()
 
 

@@ -14,6 +14,7 @@ import threading
 
 from src.EmailWindow import EmailWindow
 from src.EntryWindow import EntryWindow
+from src.LoginWindow import LoginWindow
 import data.config as config
 
 # Tree: https://www.youtube.com/watch?v=dqg0L7Qw3ko
@@ -21,7 +22,7 @@ import data.config as config
 # Table2: https://www.youtube.com/watch?v=l2OoXj1Z2hM
 
 
-class CRMMainWindow(QMainWindow, config.Config):
+class CRMMainWindow(QWidget, config.Config):
     def __init__(self, parent=None):
         super(CRMMainWindow, self).__init__(parent)
         uic.loadUi(r"..\ui\MainInterface.ui", self)
@@ -30,9 +31,8 @@ class CRMMainWindow(QMainWindow, config.Config):
         # Widgets
         self.Qmain_window = self.findChild(QWidget, "Qmain_window")
 
-        self.Qtable = self.findChild(QTableWidget, "Qtable")
+        self.Qtable = self.findChild(QTableView, "Qtable")
         self.Qtext_search = self.findChild(QLineEdit, "Qtext_search")
-        self.Qlist_category = self.findChild(QTreeWidget, "Qlist_category")
 
         self.Qbox_general = self.findChild(QGroupBox, "Qbox_general")
         self.Qbutton_general_email = self.findChild(QPushButton, "Qbutton_general_email")
@@ -48,29 +48,28 @@ class CRMMainWindow(QMainWindow, config.Config):
         self.Qbutton_client_2 = self.findChild(QPushButton, "Qbutton_client_2")
 
         # Members
+        self.LoginWindow = LoginWindow()
         self.EmailWindow = EmailWindow()
         self.EntryWindow = EntryWindow()
 
         self.data_base = self.read_data_base()
 
         # Signals
-        self.Qtable.cellClicked.connect(self.clicked_cell)
-        self.Qlist_category.itemClicked.connect(self.clicked_category)
+        self.LoginWindow.loginSuccessSignal.connect(self.on_show)
+        self.EntryWindow.entrySavedSignal.connect(self.saved_entry)
+        self.Qtable.cellClicked.connect(self.on_clicked_cell)
 
-        self.Qbutton_general_email.clicked.connect(self.clicked_email_window)
-
-        self.Qbutton_client_add.clicked.connect(self.clicked_add_entry)
-        self.Qbutton_client_modif.clicked.connect(self.clicked_modif_entry)
-        self.Qbutton_client_del.clicked.connect(self.clicked_del_entry)
+        self.Qbutton_general_email.clicked.connect(self.on_clicked_email_window)
+        self.Qbutton_client_add.clicked.connect(self.on_clicked_add_entry)
+        self.Qbutton_client_modif.clicked.connect(self.on_clicked_modif_entry)
+        self.Qbutton_client_del.clicked.connect(self.on_clicked_del_entry)
 
         # Init
+        self.LoginWindow.show()
         self.init_data_base()
 
     # Initialization ---------------------------------------------------------------------------------------------------
     def init_data_base(self):
-        # self.setCentralWidget(self.Qtable)
-        # self.Qtable.fitInView(Qt.KeepAspectRatio)
-
         self.Qtable.setColumnCount(len(self.CRITERIA))
         self.Qtable.setRowCount(len(self.data_base['entries']))
         self.Qtable.setHorizontalHeaderLabels(self.CRITERIA)
@@ -84,7 +83,7 @@ class CRMMainWindow(QMainWindow, config.Config):
         self.Qtable.resizeColumnsToContents()
         self.Qtable.resizeRowsToContents()
 
-    # Methods ----------------------------------------------------------------------------------------------------------
+    # Events -----------------------------------------------------------------------------------------------------------
     def closeEvent(self, event):
         exit_result = QMessageBox.question(self, "Inchidere..",
                                            "Doriti sa inchideti CRM-ul?",
@@ -94,6 +93,7 @@ class CRMMainWindow(QMainWindow, config.Config):
         elif exit_result == QMessageBox.No:
             event.ignore()
 
+    # Methods ----------------------------------------------------------------------------------------------------------
     def refresh_data_base(self):
         self.Qtable.setRowCount(len(self.data_base['entries']))
 
@@ -107,30 +107,33 @@ class CRMMainWindow(QMainWindow, config.Config):
         self.Qtable.resizeRowsToContents()
 
     # Slots ------------------------------------------------------------------------------------------------------------
-    def clicked_category(self):
+    @pyqtSlot()
+    def on_show(self):
+        self.LoginWindow.hide()
+        self.show()
+
+    def on_clicked_category(self):
         item = "Da, desigur, inspiratie"
         print(item)
         # TODO
 
-    def clicked_cell(self, row, col):
+    def on_clicked_cell(self, row, col):
         print(self.data_base['entries'][row][list(self.data_base['entries'][row])[col]])
 
         # General
-    def clicked_email_window(self):
+    def on_clicked_email_window(self):
         self.EmailWindow.show()
         self.hide()
 
         # Client
-    def clicked_add_entry(self):
-        self.EntryWindow.saved.connect(self.saved_entry)
+    def on_clicked_add_entry(self):
         self.EntryWindow.show()
 
-    def clicked_modif_entry(self):
+    def on_clicked_modif_entry(self):
         self.EntryWindow.set_data("Ananas")
-        self.EntryWindow.saved.connect(self.saved_entry)
         self.EntryWindow.show()
 
-    def clicked_del_entry(self):
+    def on_clicked_del_entry(self):
         # TODO
         pass
 
@@ -143,7 +146,6 @@ class CRMMainWindow(QMainWindow, config.Config):
 def show_window():
     app = QApplication([])
     window = CRMMainWindow()
-    window.show()
     app.exec_()
 
 

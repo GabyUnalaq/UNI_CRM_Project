@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1276</width>
-    <height>600</height>
+    <height>675</height>
    </rect>
   </property>
   <property name="font">
@@ -21,106 +21,23 @@
   <property name="windowTitle">
    <string>qtCRMInterface</string>
   </property>
-  <widget class="QLabel" name="Qlabel_title">
-   <property name="geometry">
-    <rect>
-     <x>200</x>
-     <y>20</y>
-     <width>661</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Courier New</family>
-     <pointsize>20</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>CRM brought to you by The Joestars®</string>
-   </property>
-  </widget>
-  <widget class="QTableWidget" name="Qtable">
-   <property name="geometry">
-    <rect>
-     <x>201</x>
-     <y>101</y>
-     <width>1061</width>
-     <height>481</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QTreeWidget" name="Qlist_category">
-   <property name="geometry">
-    <rect>
-     <x>1010</x>
-     <y>60</y>
-     <width>251</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Courier New</family>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <column>
-    <property name="text">
-     <string notr="true">1</string>
-    </property>
-   </column>
-  </widget>
-  <widget class="Line" name="Qline_main">
-   <property name="geometry">
-    <rect>
-     <x>163</x>
-     <y>10</y>
-     <width>31</width>
-     <height>581</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Vertical</enum>
-   </property>
-  </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>154</width>
-     <height>581</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="Qvert_layout_action">
-    <item>
-     <widget class="QGroupBox" name="Qbox_general">
-      <property name="font">
-       <font>
-        <family>Courier New</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="title">
-       <string>Actiuni Generale</string>
-      </property>
-      <widget class="QWidget" name="layoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>131</width>
-         <height>121</height>
-        </rect>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" rowspan="2">
+    <layout class="QVBoxLayout" name="Qvert_layout_actions">
+     <item>
+      <widget class="QGroupBox" name="Qbox_general">
+       <property name="font">
+        <font>
+         <family>Courier New</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
        </property>
-       <layout class="QVBoxLayout" name="Qvert_layout_general">
+       <property name="title">
+        <string>Actiuni Generale</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
          <widget class="Line" name="Qline_general">
           <property name="orientation">
@@ -189,33 +106,36 @@
           </property>
          </widget>
         </item>
+        <item>
+         <spacer name="Qspacer_general">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>162</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
        </layout>
       </widget>
-     </widget>
-    </item>
-    <item>
-     <widget class="QGroupBox" name="Qbox_client">
-      <property name="font">
-       <font>
-        <family>Courier New</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="title">
-       <string>Actiuni Client</string>
-      </property>
-      <widget class="QWidget" name="layoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>135</width>
-         <height>150</height>
-        </rect>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="Qbox_client">
+       <property name="font">
+        <font>
+         <family>Courier New</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
        </property>
-       <layout class="QVBoxLayout" name="Qvert_layout_client">
+       <property name="title">
+        <string>Actiuni Client</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
          <widget class="Line" name="Qline_client">
           <property name="orientation">
@@ -313,22 +233,81 @@
           </property>
          </widget>
         </item>
+        <item>
+         <spacer name="Qspacer_client">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>132</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
        </layout>
       </widget>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QLineEdit" name="Qtest_search">
-   <property name="geometry">
-    <rect>
-     <x>196</x>
-     <y>60</y>
-     <width>621</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="1" rowspan="2" colspan="2">
+    <widget class="Line" name="Qline_main">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <layout class="QVBoxLayout" name="Qvert_layout_main">
+     <item>
+      <widget class="QLabel" name="Qlabel_title">
+       <property name="font">
+        <font>
+         <family>Courier New</family>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>CRM brought to you by The Joestars®</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="Qhoriz_layout_search">
+       <item>
+        <widget class="QLineEdit" name="Qtext_search"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Qbutton_search">
+         <property name="text">
+          <string>Cauta</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QTableWidget" name="Qtable">
+       <property name="focusPolicy">
+        <enum>Qt::ClickFocus</enum>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked</set>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>
