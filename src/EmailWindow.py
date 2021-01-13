@@ -23,8 +23,8 @@ class EmailWindow(QWidget):
         self.Qcontent_attachments = self.findChild(QWidget, "Qcontent_attachments")
 
         self.Qtext_message = self.findChild(QPlainTextEdit, "Qtext_message")
-        self.Qtext_subject = self.findChild(QTextEdit, "Qtext_subject")
-        self.Qtext_to = self.findChild(QTextEdit, "Qtext_to")
+        self.Qtext_subject = self.findChild(QPlainTextEdit, "Qtext_subject")
+        self.Qtext_to = self.findChild(QPlainTextEdit, "Qtext_to")
 
         self.Qbutton_send = self.findChild(QPushButton, "Qbutton_send")
         self.Qbutton_save = self.findChild(QPushButton, "Qbutton_save")
@@ -47,12 +47,14 @@ class EmailWindow(QWidget):
         # TODO:
 
         # Signals
-        self.Qbutton_attach.clicked.connect(self.clicked_button_attach)
+        self.Qbutton_attach.clicked.connect(self.on_clicked_button_attach)
+        self.Qbutton_send.clicked.connect(self.on_clicked_button_send)
         self.Qbutton_abort.clicked.connect(self.close)
-        # TODO:
+
+        self.Qcheck_bold.stateChanged.connect(self.on_changed_bold)
 
         # Init
-        # TODO:
+        # TODO
 
     # Initialization ---------------------------------------------------------------------------------------------------
     # TODO:
@@ -61,9 +63,22 @@ class EmailWindow(QWidget):
     # TODO:
 
     # Slots ------------------------------------------------------------------------------------------------------------
-    def clicked_button_attach(self):
-        print("Attach clicked")
+    def on_clicked_button_send(self):
+        adress = self.Qtext_to.toPlainText()
+        subject = self.Qtext_subject.toPlainText()
+        message = self.Qtext_message.toPlainText()
+        print("Trimitem catre {0} cu titlul de {1} mesajul: {2}".format(adress, subject, message))
+        self.hide()
+
+    def on_clicked_button_attach(self):
+        pass
         # TODO
+
+    def on_changed_bold(self):
+        if self.Qcheck_bold.isChecked():
+            print("Vreau text bold")
+        else:
+            print("Nu mai vreau bold")
 
 
 def show_window():
