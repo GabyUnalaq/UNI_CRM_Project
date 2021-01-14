@@ -22,7 +22,7 @@ class EmailWindow(QWidget):
         self.Qmain_email = self.findChild(QWidget, "Qmain_email")
         self.Qcontent_attachments = self.findChild(QWidget, "Qcontent_attachments")
 
-        self.Qtext_message = self.findChild(QPlainTextEdit, "Qtext_message")
+        self.Qtext_message = self.findChild(QTextEdit, "Qtext_message")
         self.Qtext_subject = self.findChild(QPlainTextEdit, "Qtext_subject")
         self.Qtext_to = self.findChild(QPlainTextEdit, "Qtext_to")
 
@@ -54,7 +54,8 @@ class EmailWindow(QWidget):
         self.Qcheck_bold.stateChanged.connect(self.on_changed_bold)
 
         # Init
-        # TODO
+        # self.Qtext_message.setPlainText("Hello PyQt5!\nfrom pythonpyqt.com")
+        self.Qtext_message.setHtml("<font color='red' size='6'><red>Hello PyQt5!\nHello</font> Buna ziua")
 
     # Initialization ---------------------------------------------------------------------------------------------------
     # TODO:

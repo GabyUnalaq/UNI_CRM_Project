@@ -366,7 +366,7 @@
           </layout>
          </item>
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_8" stretch="1,50">
+          <layout class="QVBoxLayout" name="verticalLayout_8" stretch="1,0">
            <property name="sizeConstraint">
             <enum>QLayout::SetDefaultConstraint</enum>
            </property>
@@ -435,7 +435,7 @@
             </layout>
            </item>
            <item>
-            <widget class="QPlainTextEdit" name="Qtext_message"/>
+            <widget class="QTextEdit" name="Qtext_message"/>
            </item>
           </layout>
          </item>
