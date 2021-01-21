@@ -53,7 +53,7 @@ class CRMMainWindow(QWidget, config.Config):
         # Signals
         self.LoginWindow.loginSuccessSignal.connect(self.on_show)
         self.EntryWindow.entrySavedSignal.connect(self.saved_entry)
-        self.Qtable.cellDoubleClicked.connect(self.on_click_do_nothing)
+        self.Qtable.cellDoubleClicked.connect(do_nothing)
 
         self.Qbutton_general_email.clicked.connect(self.on_clicked_email_window)
         self.Qbutton_client_add.clicked.connect(self.on_clicked_add_entry)
@@ -110,9 +110,6 @@ class CRMMainWindow(QWidget, config.Config):
         self.LoginWindow.hide()
         self.show()
 
-    def on_click_do_nothing(self):
-        pass
-
         # General
     def on_clicked_email_window(self):
         self.EmailWindow.show()
@@ -126,7 +123,6 @@ class CRMMainWindow(QWidget, config.Config):
         self.EntryWindow.set_data(self.data_base['entries'][self.Qtable.currentRow()])
         self.data_base['entries'].pop(current_selection)
         self.EntryWindow.show()
-        self.refresh_data_base()
 
     def on_clicked_del_entry(self):
         self.data_base['entries'].pop(self.Qtable.currentRow())
@@ -137,6 +133,10 @@ class CRMMainWindow(QWidget, config.Config):
         entry = self.EntryWindow.get_data()
         self.data_base['entries'].append(entry)
         self.refresh_data_base()
+
+
+def do_nothing():
+    pass
 
 
 def show_window():
