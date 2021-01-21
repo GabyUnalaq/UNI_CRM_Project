@@ -122,7 +122,10 @@ class CRMMainWindow(QWidget, config.Config):
         self.EntryWindow.show()
 
     def on_clicked_modif_entry(self):
+        current_selection = self.Qtable.currentRow()
         self.EntryWindow.set_data(self.data_base['entries'][self.Qtable.currentRow()])
+        self.data_base['entries'].pop(current_selection)
+        self.EntryWindow.show()
         self.refresh_data_base()
 
     def on_clicked_del_entry(self):
