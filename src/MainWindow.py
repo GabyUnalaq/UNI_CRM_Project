@@ -54,6 +54,7 @@ class CRMMainWindow(QWidget, config.Config):
         self.LoginWindow.loginSuccessSignal.connect(self.on_show)
         self.EntryWindow.entrySavedSignal.connect(self.saved_entry)
         self.Qtable.cellClicked.connect(self.on_clicked_cell)
+        self.Qtable.cellDoubleClicked.connect(self.on_click_do_nothing)
 
         self.Qbutton_general_email.clicked.connect(self.on_clicked_email_window)
         self.Qbutton_client_add.clicked.connect(self.on_clicked_add_entry)
@@ -61,6 +62,7 @@ class CRMMainWindow(QWidget, config.Config):
         self.Qbutton_client_del.clicked.connect(self.on_clicked_del_entry)
 
         # Init
+        self.Qtable.setEditTriggers(QtWidgets.QTableWidget.NoEditTriggers)
         self.LoginWindow.show()
         self.init_data_base()
 
@@ -85,6 +87,7 @@ class CRMMainWindow(QWidget, config.Config):
                                            "Doriti sa inchideti CRM-ul?",
                                            QMessageBox.Yes | QMessageBox.No)
         if exit_result == QMessageBox.Yes:
+            self.write_data_base(self.data_base)
             event.accept()
         elif exit_result == QMessageBox.No:
             event.ignore()
@@ -111,6 +114,9 @@ class CRMMainWindow(QWidget, config.Config):
     def on_clicked_cell(self, row, col):
         print(self.data_base['entries'][row][list(self.data_base['entries'][row])[col]])
 
+    def on_click_do_nothing(self):
+        pass
+
         # General
     def on_clicked_email_window(self):
         self.EmailWindow.show()
@@ -120,17 +126,18 @@ class CRMMainWindow(QWidget, config.Config):
         self.EntryWindow.show()
 
     def on_clicked_modif_entry(self):
-        self.EntryWindow.set_data("Ananas")
-        self.EntryWindow.show()
+        self.EntryWindow.set_data(self.data_base['entries'][self.Qtable.currentRow()])
+        self.refresh_data_base()
 
     def on_clicked_del_entry(self):
-        # TODO
-        pass
+        self.data_base['entries'].pop(self.Qtable.currentRow())
+        self.refresh_data_base()
 
     @pyqtSlot()
     def saved_entry(self):
         entry = self.EntryWindow.get_data()
-        print(entry)
+        self.data_base['entries'].append(entry)
+        self.refresh_data_base()
 
 
 def show_window():

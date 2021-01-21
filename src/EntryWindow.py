@@ -19,7 +19,7 @@ class EntryWindow(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi(r"..\ui\EntryInterface.ui", self)
-        self.setWindowTitle("Adaugare intrare")
+        self.setWindowTitle("Entry Interface")
 
         # Widgets
         self.Qbutton_save = self.findChild(QPushButton, "Qbutton_save")
@@ -45,22 +45,41 @@ class EntryWindow(QWidget):
         self.Qbutton_abort.clicked.connect(self.close)
 
         # Init
-        # TODO:
+        # self.Qtext_error.setHtml("<font color='red' size='6'><red>Hello PyQt5!\nHello</font> Buna ziua")
 
     # Initialization ---------------------------------------------------------------------------------------------------
     # TODO:
 
     # Methods ----------------------------------------------------------------------------------------------------------
     def error_check(self):
-        # TODO
+        if self.Qtext_name_p.text() is "":
+            self.Qtext_error.setPlainText("Introduceti numele persoanei de contact.")
+            return True
+        if self.Qtext_dates.text() is "":
+            self.Qtext_error.setPlainText("Introduceti datele persoanei de contact.")
+            return True
+        if self.Qtext_name_f.text() is "":
+            self.Qtext_error.setPlainText("Introduceti numele firmei.")
+            return True
         return False
 
     def set_data(self, data):
         self.data = data
+        self.Qtext_name_p.setText(str(self.data["name_p"]))
+        self.Qtext_dates.setText(str(self.data["dates"]))
+        self.Qtext_name_f.setText(str(self.data["name_f"]))
 
     def get_data(self):
         if self.data is None:
-            self.data = "Mamaliga"
+            name = self.Qtext_name_p.text()
+            info = self.Qtext_dates.text()
+            company = self.Qtext_name_f.text()
+            data_2_send = {
+                "name_p": name,
+                "dates": info,
+                "name_f": company
+            }
+            self.data = data_2_send
         return self.data
 
     # Slots ------------------------------------------------------------------------------------------------------------
