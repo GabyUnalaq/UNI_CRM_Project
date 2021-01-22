@@ -64,23 +64,26 @@ class EntryWindow(QWidget):
         return False
 
     def set_data(self, data):
-        self.data = data
-        self.Qtext_name_p.setText(str(self.data["name_p"]))
-        self.Qtext_dates.setText(str(self.data["dates"]))
-        self.Qtext_name_f.setText(str(self.data["name_f"]))
+        # self.data = data
+        self.Qtext_name_p.setText(str(data["name_p"]))
+        self.Qtext_dates.setText(str(data["dates"]))
+        self.Qtext_name_f.setText(str(data["name_f"]))
 
     def get_data(self):
-        if self.data is None:
-            name = self.Qtext_name_p.text()
-            info = self.Qtext_dates.text()
-            company = self.Qtext_name_f.text()
-            data_2_send = {
-                "name_p": name,
-                "dates": info,
-                "name_f": company
-            }
-            self.data = data_2_send
-        return self.data
+        name = self.Qtext_name_p.text()
+        info = self.Qtext_dates.text()
+        company = self.Qtext_name_f.text()
+        data_2_send = {
+            "name_p": name,
+            "dates": info,
+            "name_f": company
+        }
+        self.data = data_2_send
+        print(self.data)
+        if name is not "" or info is not "" or company is not "":
+            return self.data
+        else:
+            pass
 
     # Slots ------------------------------------------------------------------------------------------------------------
     def on_click_save(self):

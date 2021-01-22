@@ -11,6 +11,7 @@ import sys
 import os
 import time
 import threading
+import copy
 
 from src.EmailWindow import EmailWindow
 from src.EntryWindow import EntryWindow
@@ -49,11 +50,13 @@ class CRMMainWindow(QWidget, config.Config):
         self.EntryWindow = EntryWindow()
 
         self.data_base = self.read_data_base()
+        self.selected_row = None
 
         # Signals
         self.LoginWindow.loginSuccessSignal.connect(self.on_show)
         self.EntryWindow.entrySavedSignal.connect(self.saved_entry)
         self.Qtable.cellDoubleClicked.connect(do_nothing)
+        self.Qtable.cellClicked.connect(self.on_clicked_cell)
 
         self.Qbutton_general_email.clicked.connect(self.on_clicked_email_window)
         self.Qbutton_client_add.clicked.connect(self.on_clicked_add_entry)
@@ -118,21 +121,30 @@ class CRMMainWindow(QWidget, config.Config):
     def on_clicked_add_entry(self):
         self.EntryWindow.show()
 
+    def on_clicked_cell(self):
+        self.selected_row = self.Qtable.currentRow()
+
     def on_clicked_modif_entry(self):
-        current_selection = self.Qtable.currentRow()
-        self.EntryWindow.set_data(self.data_base['entries'][self.Qtable.currentRow()])
-        self.data_base['entries'].pop(current_selection)
-        self.EntryWindow.show()
+        if self.selected_row is not None:
+            data_copy = copy.copy(self.data_base['entries'][self.selected_row])
+            self.EntryWindow.set_data(data_copy)
+            # print(data_copy)
+            self.EntryWindow.show()
 
     def on_clicked_del_entry(self):
         self.data_base['entries'].pop(self.Qtable.currentRow())
         self.refresh_data_base()
+        self.selected_row = None
 
     @pyqtSlot()
     def saved_entry(self):
         entry = self.EntryWindow.get_data()
+        # if entry not in self.data_base['entries']:
         self.data_base['entries'].append(entry)
+        if self.selected_row is not None:
+            self.data_base['entries'].pop(self.selected_row)
         self.refresh_data_base()
+        self.selected_row = None
 
 
 def do_nothing():
