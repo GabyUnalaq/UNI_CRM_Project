@@ -119,6 +119,7 @@ class CRMMainWindow(QWidget, config.Config):
 
         # Client
     def on_clicked_add_entry(self):
+        self.EntryWindow.set_empty()
         self.EntryWindow.show()
 
     def on_clicked_cell(self):

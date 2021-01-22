@@ -69,6 +69,11 @@ class EntryWindow(QWidget):
         self.Qtext_dates.setText(str(data["dates"]))
         self.Qtext_name_f.setText(str(data["name_f"]))
 
+    def set_empty(self):
+        self.Qtext_name_p.setText('')
+        self.Qtext_dates.setText('')
+        self.Qtext_name_f.setText('')
+
     def get_data(self):
         name = self.Qtext_name_p.text()
         info = self.Qtext_dates.text()
@@ -79,7 +84,6 @@ class EntryWindow(QWidget):
             "name_f": company
         }
         self.data = data_2_send
-        print(self.data)
         if name is not "" or info is not "" or company is not "":
             return self.data
         else:
