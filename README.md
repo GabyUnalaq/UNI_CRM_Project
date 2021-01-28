@@ -6,8 +6,11 @@ Year 2020-2021
 
 ## Important notes:
 ### Coding language
- - Mainly done in Python
+ - Mainly done in Python (version 3.7.8)
  - Interface made with Qt5
+ 
+### Programs used
+ - PyCharm Community Edition 2020.1.3
  
 ### Students working:
  - a lot 1
