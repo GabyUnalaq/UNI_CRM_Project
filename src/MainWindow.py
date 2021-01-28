@@ -16,6 +16,7 @@ import copy
 from src.EmailWindow import EmailWindow
 from src.EntryWindow import EntryWindow
 from src.LoginWindow import LoginWindow
+from src.ReportWindow import ReportWindow
 import data.config as config
 
 # Tree: https://www.youtube.com/watch?v=dqg0L7Qw3ko
@@ -48,6 +49,7 @@ class CRMMainWindow(QWidget, config.Config):
         self.LoginWindow = LoginWindow()
         self.EmailWindow = EmailWindow()
         self.EntryWindow = EntryWindow()
+        self.ReportWindow = ReportWindow()
 
         self.data_base = self.read_data_base()
         self.selected_row = None
@@ -59,6 +61,7 @@ class CRMMainWindow(QWidget, config.Config):
         self.Qtable.cellClicked.connect(self.on_clicked_cell)
 
         self.Qbutton_general_email.clicked.connect(self.on_clicked_email_window)
+        self.Qbutton_general_rap.clicked.connect(self.on_clicked_reports_window)
         self.Qbutton_client_add.clicked.connect(self.on_clicked_add_entry)
         self.Qbutton_client_modif.clicked.connect(self.on_clicked_modif_entry)
         self.Qbutton_client_del.clicked.connect(self.on_clicked_del_entry)
@@ -131,6 +134,10 @@ class CRMMainWindow(QWidget, config.Config):
             self.EntryWindow.set_data(data_copy)
             # print(data_copy)
             self.EntryWindow.show()
+
+    def on_clicked_reports_window(self):
+        self.ReportWindow.update_data_base(self.data_base)
+        self.ReportWindow.show()
 
     def on_clicked_del_entry(self):
         self.data_base['entries'].pop(self.Qtable.currentRow())

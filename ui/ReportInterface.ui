@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Qmain_report_entry</class>
+ <widget class="QWidget" name="Qmain_report_entry">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>569</width>
+    <height>650</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>qtCRMInterface</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="Qhoriz_layout_main">
+     <item>
+      <layout class="QVBoxLayout" name="Qvert_layout_opt">
+       <item>
+        <widget class="QPushButton" name="Qbutton_send">
+         <property name="text">
+          <string>Trimite</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Qbutton_abort">
+         <property name="text">
+          <string>Renunta</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="Qlabel_format">
+         <property name="text">
+          <string>Formatul dorit</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListWidget" name="Qlist_format"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QListWidget" name="Qlist_main"/>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
