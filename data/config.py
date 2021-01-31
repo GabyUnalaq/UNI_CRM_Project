@@ -26,8 +26,8 @@ class Config(object):
                 data = json.load(json_file)
                 return data
 
-    def write_data_base(self, data, server_read=False):
-        if server_read:
+    def write_data_base(self, data, server_write=False):
+        if server_write:
             print("Writing to server..")
             # TODO
         else:

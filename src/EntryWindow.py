@@ -12,6 +12,12 @@ import os
 import time
 import threading
 
+# TODO Read FArky
+'''
+ca sa accesezi un item din baza de date:
+self.data_base["entries"][0]["name_p"] = "Bita Robert"
+'''
+
 
 class EntryWindow(QWidget):
     entrySavedSignal = pyqtSignal()
@@ -26,6 +32,8 @@ class EntryWindow(QWidget):
         self.Qbutton_abort = self.findChild(QPushButton, "Qbutton_abort")
         self.Qtext_obs = self.findChild(QPlainTextEdit, "Qtext_obs")
         self.Qtext_error = self.findChild(QPlainTextEdit, "Qtext_error")
+        self.Qtext_act = self.findChild(QPlainTextEdit, "Qtext_act")
+        self.Qtext_reminder = self.findChild(QPlainTextEdit, "Qtext_reminder")
 
         self.Qtext_name_p = self.findChild(QLineEdit, "Qtext_name_p")
         self.Qtext_dates = self.findChild(QLineEdit, "Qtext_dates")
@@ -45,7 +53,7 @@ class EntryWindow(QWidget):
         self.Qbutton_abort.clicked.connect(self.close)
 
         # Init
-        # self.Qtext_error.setHtml("<font color='red' size='6'><red>Hello PyQt5!\nHello</font> Buna ziua")
+        # TODO
 
     # Initialization ---------------------------------------------------------------------------------------------------
     # TODO:
@@ -61,6 +69,7 @@ class EntryWindow(QWidget):
         if self.Qtext_name_f.text() is "":
             self.Qtext_error.setPlainText("Introduceti numele firmei.")
             return True
+        # TODO Farky
         return False
 
     def set_data(self, data):
@@ -68,20 +77,24 @@ class EntryWindow(QWidget):
         self.Qtext_name_p.setText(str(data["name_p"]))
         self.Qtext_dates.setText(str(data["dates"]))
         self.Qtext_name_f.setText(str(data["name_f"]))
+        # TODO Farky
 
     def set_empty(self):
         self.Qtext_name_p.setText('')
         self.Qtext_dates.setText('')
         self.Qtext_name_f.setText('')
+        # TODO Farky
 
     def get_data(self):
         name = self.Qtext_name_p.text()
         info = self.Qtext_dates.text()
         company = self.Qtext_name_f.text()
+        # TODO Farky
         data_2_send = {
             "name_p": name,
             "dates": info,
             "name_f": company
+            # TODO Farky
         }
         self.data = data_2_send
         if name is not "" or info is not "" or company is not "":

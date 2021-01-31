@@ -17,6 +17,7 @@ from src.EmailWindow import EmailWindow
 from src.EntryWindow import EntryWindow
 from src.LoginWindow import LoginWindow
 from src.ReportWindow import ReportWindow
+from src.ActionWindow import ActionWindow
 import data.config as config
 
 # Tree: https://www.youtube.com/watch?v=dqg0L7Qw3ko
@@ -39,18 +40,23 @@ class CRMMainWindow(QWidget, config.Config):
         self.Qbutton_general_notif = self.findChild(QPushButton, "Qbutton_general_notif")  # Notificari
         self.Qbutton_general_lich = self.findChild(QPushButton, "Qbutton_general_lich")  # Licitatii
         self.Qbutton_general_rap = self.findChild(QPushButton, "Qbutton_general_rap")  # Rapoarte
+        self.Qbutton_general_act = self.findChild(QPushButton, "Qbutton_general_act")  # Actiune
 
         self.Qbutton_client_add = self.findChild(QPushButton, "Qbutton_client_add")  # Adauga intrare
         self.Qbutton_client_modif = self.findChild(QPushButton, "Qbutton_client_modif")  # Modifica intrare
         self.Qbutton_client_del = self.findChild(QPushButton, "Qbutton_client_del")  # Sterge intrare
         self.Qbutton_client_comp = self.findChild(QPushButton, "Qbutton_client_comp")  # Info companie
 
-        # Members
+        # Windows
         self.LoginWindow = LoginWindow()
-        self.EmailWindow = EmailWindow()
-        self.EntryWindow = EntryWindow()
-        self.ReportWindow = ReportWindow()
 
+        self.EmailWindow = EmailWindow()
+        self.ReportWindow = ReportWindow()
+        self.ActionWindow = ActionWindow()
+
+        self.EntryWindow = EntryWindow()
+
+        # Members
         self.data_base = self.read_data_base()
         self.selected_row = None
 
@@ -62,6 +68,7 @@ class CRMMainWindow(QWidget, config.Config):
 
         self.Qbutton_general_email.clicked.connect(self.on_clicked_email_window)
         self.Qbutton_general_rap.clicked.connect(self.on_clicked_reports_window)
+        self.Qbutton_general_act.clicked.connect(self.on_clicked_action_window)
         self.Qbutton_client_add.clicked.connect(self.on_clicked_add_entry)
         self.Qbutton_client_modif.clicked.connect(self.on_clicked_modif_entry)
         self.Qbutton_client_del.clicked.connect(self.on_clicked_del_entry)
@@ -116,17 +123,25 @@ class CRMMainWindow(QWidget, config.Config):
         self.LoginWindow.hide()
         self.show()
 
+    def on_clicked_cell(self):
+        self.selected_row = self.Qtable.currentRow()
+
         # General
     def on_clicked_email_window(self):
         self.EmailWindow.show()
+
+    def on_clicked_reports_window(self):
+        self.ReportWindow.update_data_base(self.data_base)
+        self.ReportWindow.show()
+
+    def on_clicked_action_window(self):
+        self.ActionWindow.show()
+        # TODO Farky
 
         # Client
     def on_clicked_add_entry(self):
         self.EntryWindow.set_empty()
         self.EntryWindow.show()
-
-    def on_clicked_cell(self):
-        self.selected_row = self.Qtable.currentRow()
 
     def on_clicked_modif_entry(self):
         if self.selected_row is not None:
@@ -135,12 +150,9 @@ class CRMMainWindow(QWidget, config.Config):
             # print(data_copy)
             self.EntryWindow.show()
 
-    def on_clicked_reports_window(self):
-        self.ReportWindow.update_data_base(self.data_base)
-        self.ReportWindow.show()
-
     def on_clicked_del_entry(self):
         self.data_base['entries'].pop(self.Qtable.currentRow())
+        self.data_base['counter'] -= 1
         self.refresh_data_base()
         self.selected_row = None
 
@@ -151,6 +163,8 @@ class CRMMainWindow(QWidget, config.Config):
         self.data_base['entries'].append(entry)
         if self.selected_row is not None:
             self.data_base['entries'].pop(self.selected_row)
+        else:
+            self.data_base['counter'] += 1
         self.refresh_data_base()
         self.selected_row = None
 

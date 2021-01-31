@@ -15,7 +15,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <layout class="QHBoxLayout" name="Qhorz_layout_main" stretch="1,4">
+    <layout class="QHBoxLayout" name="Qhoriz_layout_main" stretch="2,4,1">
      <item>
       <layout class="QVBoxLayout" name="Qvert_layout_actions" stretch="1,1,0,3,0,1">
        <item>
@@ -285,6 +285,52 @@
           <widget class="QLineEdit" name="Qtext_fund"/>
          </item>
         </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="Qvert_layout_reminder" stretch="0,3,0,1">
+       <item>
+        <widget class="QLabel" name="Qlabel_act">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Actiuni firma:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPlainTextEdit" name="Qtext_act">
+         <property name="cursor" stdset="0">
+          <cursorShape>IBeamCursor</cursorShape>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="Qlabel_reminder">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Reminder:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPlainTextEdit" name="Qtext_reminder">
+         <property name="cursor" stdset="0">
+          <cursorShape>IBeamCursor</cursorShape>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
