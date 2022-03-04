@@ -1,1 +1,77 @@
-{"counter": 4, "criteria": ["Nume + Prenume", "Informatii", "Nume firma"], "entries": [{"name_p": "Bita Robert", "dates": "nu stiu", "name_f": "Gara Codlea INC"}, {"name_p": "Horju Rares", "dates": "nu stiu", "name_f": "Horjupolis"}, {"name_p": "Tomuta Gabriel", "dates": "nu stiu dar mai cool", "name_f": "Lamaie"}, {"name_p": "Patrania Bogdan", "dates": "nu stiu ce este aici", "name_f": "Wow player png"}]}
+{
+   "counter":5,
+   "criteria":[
+      "Nume + Prenume",
+      "Informatii",
+      "Nume firma",
+      "CUI",
+      "Email",
+      "Telefon",
+      "Num. Angajati",
+      "CAEN",
+      "Finantare",
+      "Observatii"
+   ],
+   "entries": [
+      {
+         "name_p": "Jim Hagemann Snabe",
+         "dates": "Born in Egedal Kommune in Denmark.",
+         "name_f": "Siemens",
+         "cui": "7614474",
+         "email": "general@siemens.com",
+         "tel": "+49 (89) 3803 5491",
+         "num_a": "303,000",
+         "caen": "4614",
+         "fund": "Need funding for better offices.",
+         "obs": "-"
+      },
+      {
+         "name_p":"Bita Robert",
+         "dates":"robert.bita@student.unitbv.ro",
+         "name_f":"Penitenciar Codlea",
+         "cui": "4317584",
+         "email": "penitenciar@codlea.parnaie.cod",
+         "tel": "112",
+         "num_a": "50.000",
+         "caen": "4322",
+         "fund": "Better whips.",
+         "obs": "The employees do not seem happy, I wonder why."
+      },
+      {
+         "name_p":"Horju Rares",
+         "dates":"rares.horju@student.unitbv.ro",
+         "name_f":"Horju mobila",
+         "cui": "27098610",
+         "email": "horju.mobila@piele_de_cal.ro",
+         "tel": "0723.181.414",
+         "num_a": "24",
+         "caen": "3102",
+         "fund": "PIELE DE CAL",
+         "obs": "Aparent este o firma cu acelasi cod de identificare fiscala in Vlas, Str. COCORILOR, Nr. 7, Județ Arad. Suspect dar hey, asta e mobila."
+      },
+      {
+         "name_p":"Patrania Bogdan",
+         "dates":"bogdan.patrania@student.unitbv.ro",
+         "name_f":"WOW - for the people",
+         "cui": "20899859",
+         "email": "general@siemens.com",
+         "tel": "0214.252.423",
+         "num_a": "257+",
+         "caen": "9200",
+         "fund": "Se baga expansiune, ne trebuie fonduri!",
+         "obs": "Descriere: Activitati de jocuri de farmat si noroc."
+      },
+      {
+         "name_p":"Tomuta Gabriel",
+         "dates":"0735.787.196",
+         "name_f":"Clatite SRL",
+         "cui": "37374748",
+         "email": "clatite@nuttela.rom",
+         "tel": "+4075 456 7127",
+         "num_a": "3 :(",
+         "caen": "1071",
+         "fund": "Raman zilnic fara nutella dupa doar 2 clatite..",
+         "obs": "Is bune clatitele, pune juma de borcan de ciocolata intr-una."
+      }
+   ]
+}
