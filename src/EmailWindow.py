@@ -1,5 +1,6 @@
 """
     CRM Email Window
+    NOT FUNCTIONAL
     Authors: Gabriel Tomuta, Patrania Bogdan
 """
 

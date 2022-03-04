@@ -12,11 +12,8 @@ Year 2020-2021
 ### Programs used
  - PyCharm Community Edition 2020.1.3
  
-### Students working:
- - a lot 1
- - a lot 2
- 
-## Footnotes:
+### Footnotes:
+ - Currently adding a greater database to this project.
 
 ### == PAS 1 ==
 

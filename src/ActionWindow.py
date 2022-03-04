@@ -1,5 +1,6 @@
 """
     CRM Action Window
+    NOT FUNCTIONAL
     Authors: Gabriel Tomuta, Farkas Raul
 """
 

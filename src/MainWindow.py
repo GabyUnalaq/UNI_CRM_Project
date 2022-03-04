@@ -3,14 +3,9 @@
     Authors: Rares Horju, Gabriel Tomuta
 """
 
-from PyQt5 import uic, QtWidgets, QtGui
+from PyQt5 import uic, QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-import sys
-import os
-import time
-import threading
 import copy
 
 from src.EmailWindow import EmailWindow
@@ -23,6 +18,8 @@ import data.config as config
 # Tree: https://www.youtube.com/watch?v=dqg0L7Qw3ko
 # Table: https://www.youtube.com/watch?v=xL2NdSubiNY
 # Table2: https://www.youtube.com/watch?v=l2OoXj1Z2hM
+
+LOGIN_NEEDED = False
 
 
 class CRMMainWindow(QWidget, config.Config):
@@ -38,14 +35,14 @@ class CRMMainWindow(QWidget, config.Config):
 
         self.Qbutton_general_email = self.findChild(QPushButton, "Qbutton_general_email")  # Email
         self.Qbutton_general_notif = self.findChild(QPushButton, "Qbutton_general_notif")  # Notificari
-        self.Qbutton_general_lich = self.findChild(QPushButton, "Qbutton_general_lich")  # Licitatii
-        self.Qbutton_general_rap = self.findChild(QPushButton, "Qbutton_general_rap")  # Rapoarte
-        self.Qbutton_general_act = self.findChild(QPushButton, "Qbutton_general_act")  # Actiune
+        self.Qbutton_general_lich = self.findChild(QPushButton, "Qbutton_general_lich")    # Licitatii
+        self.Qbutton_general_rap = self.findChild(QPushButton, "Qbutton_general_rap")      # Rapoarte
+        self.Qbutton_general_act = self.findChild(QPushButton, "Qbutton_general_act")      # Actiune
 
-        self.Qbutton_client_add = self.findChild(QPushButton, "Qbutton_client_add")  # Adauga intrare
+        self.Qbutton_client_add = self.findChild(QPushButton, "Qbutton_client_add")      # Adauga intrare
         self.Qbutton_client_modif = self.findChild(QPushButton, "Qbutton_client_modif")  # Modifica intrare
-        self.Qbutton_client_del = self.findChild(QPushButton, "Qbutton_client_del")  # Sterge intrare
-        self.Qbutton_client_comp = self.findChild(QPushButton, "Qbutton_client_comp")  # Info companie
+        self.Qbutton_client_del = self.findChild(QPushButton, "Qbutton_client_del")      # Sterge intrare
+        self.Qbutton_client_comp = self.findChild(QPushButton, "Qbutton_client_comp")    # Info companie
 
         # Windows
         self.LoginWindow = LoginWindow()
@@ -73,10 +70,16 @@ class CRMMainWindow(QWidget, config.Config):
         self.Qbutton_client_modif.clicked.connect(self.on_clicked_modif_entry)
         self.Qbutton_client_del.clicked.connect(self.on_clicked_del_entry)
 
+        # Window show
+        if LOGIN_NEEDED:
+            self.LoginWindow.show()
+        else:
+            self.show()
+
         # Init
         self.Qtable.setEditTriggers(QtWidgets.QTableWidget.NoEditTriggers)
-        self.LoginWindow.show()
         self.init_data_base()
+        self.init_closed_buttons()
 
     # Initialization ---------------------------------------------------------------------------------------------------
     def init_data_base(self):
@@ -85,13 +88,21 @@ class CRMMainWindow(QWidget, config.Config):
         self.Qtable.setHorizontalHeaderLabels(self.data_base['criteria'])
 
         # Load data
-        for row in range(0, len(self.data_base['entries'])):
+        for row in range(0, self.data_base['counter']):
             for col in range(0, len(self.data_base['criteria'])):
                 item = self.data_base['entries'][row][list(self.data_base['entries'][row])[col]]
                 self.Qtable.setItem(row, col, QTableWidgetItem(item))
 
         self.Qtable.resizeColumnsToContents()
         self.Qtable.resizeRowsToContents()
+
+    def init_closed_buttons(self):
+        self.Qbutton_general_email.setEnabled(False)
+        self.Qbutton_general_notif.setEnabled(False)
+        self.Qbutton_general_lich.setEnabled(False)
+        self.Qbutton_general_rap.setEnabled(False)
+        self.Qbutton_general_act.setEnabled(False)
+        self.Qbutton_client_comp.setEnabled(False)
 
     # Events -----------------------------------------------------------------------------------------------------------
     def closeEvent(self, event):
@@ -136,7 +147,6 @@ class CRMMainWindow(QWidget, config.Config):
 
     def on_clicked_action_window(self):
         self.ActionWindow.show()
-        # TODO Farky
 
         # Client
     def on_clicked_add_entry(self):
