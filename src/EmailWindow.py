@@ -15,7 +15,7 @@ import threading
 
 class EmailWindow(QWidget):
     def __init__(self):
-        super().__init__()
+        super().__init__(*args, **kwargs)
         uic.loadUi(r"..\ui\EmailInterface.ui", self)
         self.setWindowTitle("Send E-mail")
 

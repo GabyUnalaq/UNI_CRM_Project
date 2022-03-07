@@ -19,7 +19,7 @@ class EntryWindow(QWidget):
     entrySavedSignal = pyqtSignal()
 
     def __init__(self):
-        super().__init__()
+        super().__init__(*args, **kwargs)
         uic.loadUi(r"..\ui\EntryInterface.ui", self)
         self.setWindowTitle("Entry Interface")
 
@@ -50,6 +50,7 @@ class EntryWindow(QWidget):
 
     # Methods ----------------------------------------------------------------------------------------------------------
     def error_check(self):
+        # TODO check
         if self.Qtext_name_p.text() == "":
             self.Qtext_error.setPlainText("Introduceti numele persoanei de contact.")
             return True
@@ -71,6 +72,9 @@ class EntryWindow(QWidget):
             return True
         if self.Qtext_tel.text() != "" and not any(ch in ' .0123456789' for ch in self.Qtext_tel.text()):
             self.Qtext_error.setPlainText("Numar de telefon invalid.")
+            return True
+        if self.Qtext_num_a.text() != "" and not any(ch in '0123456789' for ch in self.Qtext_num_a.text()):
+            self.Qtext_error.setPlainText("Numar de angajati invalid.")
             return True
         if self.Qtext_caen.text() == "":
             self.Qtext_error.setPlainText("Introduceti codul CAEN al firmei.")

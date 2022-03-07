@@ -19,7 +19,7 @@ import data.config as config
 # Table: https://www.youtube.com/watch?v=xL2NdSubiNY
 # Table2: https://www.youtube.com/watch?v=l2OoXj1Z2hM
 
-LOGIN_NEEDED = False
+LOGIN_NEEDED = True
 
 
 class CRMMainWindow(QWidget, config.Config):

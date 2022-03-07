@@ -1,7 +1,7 @@
 """
     CRM Action Window
     NOT FUNCTIONAL
-    Authors: Gabriel Tomuta, Farkas Raul
+    Authors: Gabriel Tomuta
 """
 
 from PyQt5 import uic, QtWidgets
@@ -15,7 +15,7 @@ import threading
 
 class ActionWindow(QWidget):
     def __init__(self):
-        super().__init__()
+        super().__init__(*args, **kwargs)
         uic.loadUi(r"..\ui\ActionInterface.ui", self)
         self.setWindowTitle("Actiuni")
 
