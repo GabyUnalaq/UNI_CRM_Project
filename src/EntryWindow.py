@@ -19,7 +19,7 @@ class EntryWindow(QWidget):
     entrySavedSignal = pyqtSignal()
 
     def __init__(self):
-        super().__init__(*args, **kwargs)
+        super().__init__()
         uic.loadUi(r"..\ui\EntryInterface.ui", self)
         self.setWindowTitle("Entry Interface")
 

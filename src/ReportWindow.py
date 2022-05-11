@@ -15,7 +15,7 @@ import threading
 
 class ReportWindow(QWidget):
     def __init__(self):
-        super().__init__(*args, **kwargs)
+        super().__init__()
         uic.loadUi(r"..\ui\ReportInterface.ui", self)
         self.setWindowTitle("Rapoarte")
 

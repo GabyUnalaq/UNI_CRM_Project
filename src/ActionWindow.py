@@ -15,7 +15,7 @@ import threading
 
 class ActionWindow(QWidget):
     def __init__(self):
-        super().__init__(*args, **kwargs)
+        super().__init__()
         uic.loadUi(r"..\ui\ActionInterface.ui", self)
         self.setWindowTitle("Actiuni")
 
